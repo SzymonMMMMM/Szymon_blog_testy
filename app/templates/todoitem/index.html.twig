@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.todoitem_list'|trans }}
+{% endblock %}
+
+{% block body %}
+    {% include 'default/_three_way_toggle_button.html.twig' with {
+        toggle_position: 'todoitem_position',
+    }%}
+    <h1 class="display-1">{{ 'title.todoitem_list'|trans }}</h1>
+    {% if pagination is defined and pagination.items|length %}
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'todoitem.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 'todoitem.createdAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 'todoitem.updatedAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'todoitem.title') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.completed'|trans, 'todoitem.completed') }}</th>
+                <th>{{ 'label.actions'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for todoitem in pagination.items %}
+                <tr>
+                    <td>{{ todoitem.id }}</td>
+                    <td>{{ todoitem.createdAt|format_date('long')}}</td>
+                    <td>{{ todoitem.updatedAt|format_date('long') }}</td>
+                    <td{% if todoitem.completed %} style="text-decoration: line-through;"{% endif %}>{{ todoitem.title }}</td>
+                    <td>
+                        <input title="checkbox" label="checkbox" class="form-check-input" type="checkbox" {% if todoitem.completed %}checked{% endif %} disabled class="green-checkbox">
+                    </td>
+                    <td  class="action-links">
+                        <a class="btn btn-outline-primary" href="{{ url('todoitem_show', {id: todoitem.id}) }}" title="{{ 'action.view'|trans }}">
+                            {{ 'action.view'|trans }}
+                        </a>
+                        <a class="btn btn-outline-success" href="{{ url('todoitem_edit', {id: todoitem.id}) }}" title="{{ 'action.edit'|trans }}">
+                            {{ 'action.edit'|trans }}
+                        </a>
+                        <a class="btn btn-outline-danger" href="{{ url('todoitem_delete', {id: todoitem.id}) }}" title="{{ 'action.delete'|trans }}">
+                            {{ 'action.delete'|trans }}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>
+            {{ 'message.empty_list'|trans }}
+        </p>
+    {% endif %}
+    {% include 'default/_add_button.html.twig' with {
+        name_create: url('todoitem_create')
+    } %}
+{% endblock  %}

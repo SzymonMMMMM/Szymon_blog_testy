@@ -1,0 +1,126 @@
+.float-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9999;
+}
+
+
+.btn-floating {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    text-align: center;
+    padding: 0;
+    font-size: 35px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.tw-toggle {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    padding: 4px 6px;
+    border-radius: 100px;
+    position: relative;
+    border: 2px solid #777;
+    flex-flow: wrap;
+    width: 410px;
+}
+@media (min-width: 727px) {
+    .tw-toggle{
+        float: right;    }
+}
+@media (max-width: 727px) {
+    .tw-toggle{
+        margin: 0 auto;
+    }
+}
+@media (max-width: 570px) {
+    .tw-toggle{
+        margin-top: 5%;
+        margin-bottom: 3%;
+    }
+}
+.tw-toggle label {
+    text-align: center;
+    font-family: sans-serif;
+    display: inline-block;
+    color: #777;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 4px 0;
+    font-size: 15px;
+    width: 130px;
+}
+
+.tw-toggle input {
+    height: 100px;
+    margin: 0;
+    position: absolute;
+    z-index: 3;
+    opacity: 0;
+    cursor: pointer;
+    width: 130px;
+}
+
+.tw-toggle span {
+    height: 90px;
+    width: 130px;
+    line-height: 100px;
+    border-radius: 100px;
+    background: #fff;
+    display: block;
+    position: absolute;
+    left: 22px;
+    top: 4px;
+    transition: all 0.3s ease-in-out;
+}
+
+.tw-toggle input[value="false"] {
+    left: 3px;
+}
+
+.tw-toggle input[value="-1"] {
+    left: 153px;
+}
+
+.tw-toggle input[value="true"] {
+    left: 303px;
+}
+
+.tw-toggle input[value="false"]:checked ~ span {
+    background: #e74c3c;
+    left: 8px;
+    color: #fff;
+}
+
+.tw-toggle input[value="true"]:checked ~ span {
+    background: #27ae60;
+    left: 267px;
+}
+
+.tw-toggle input[value="-1"]:checked ~ span {
+    background: #444;
+    left: 137px;
+}
+
+.tw-toggle input[value="false"]:checked + label,
+.tw-toggle input[value="true"]:checked + label {
+    color: #fff;
+}
+
+.tw-toggle input[value="-1"]:checked + label {
+    color: #fff;
+}
+/* Actions */
+.action-links {
+    gap: 10px;
+    width: 210px;
+    justify-content: flex-end;}
+
+.action-links a {
+    padding: 5px;
+}
+

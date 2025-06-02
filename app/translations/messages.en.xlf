@@ -1,0 +1,327 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="label.actions">
+                <source>label.actions</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="label.id">
+                <source>label.id</source>
+                <target>ID</target>
+            </trans-unit>
+            <trans-unit id="label.title">
+                <source>label.title</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="label.content">
+                <source>label.content</source>
+                <target>Content</target>
+            </trans-unit>
+            <trans-unit id="label.tags">
+                <source>label.tags</source>
+                <target>Tags</target>
+            </trans-unit>
+            <trans-unit id="label.notes">
+                <source>label.notes</source>
+                <target>Notes</target>
+            </trans-unit>
+            <trans-unit id="label.to-do_list">
+                <source>label.to-do_list</source>
+                <target>To-do list</target>
+            </trans-unit>
+            <trans-unit id="label.category_manager">
+                <source>label.category_manager</source>
+                <target>Category manager</target>
+            </trans-unit>
+            <trans-unit id="label.created_at">
+                <source>label.created_at</source>
+                <target>Created at</target>
+            </trans-unit>
+            <trans-unit id="label.updated_at">
+                <source>label.updated_at</source>
+                <target>Updated at</target>
+            </trans-unit>
+            <trans-unit id="label.category">
+                <source>label.category</source>
+                <target>Category</target>
+            </trans-unit>
+            <trans-unit id="message.empty_list">
+                <source>message.empty_list</source>
+                <target>List is empty.</target>
+            </trans-unit>
+            <trans-unit id="title.note_list">
+                <source>title.note_list</source>
+                <target>Notes list</target>
+            </trans-unit>
+            <trans-unit id="action.view">
+                <source>action.view</source>
+                <target>View</target>
+            </trans-unit>
+            <trans-unit id="action.post">
+                <source>action.post</source>
+                <target>Post</target>
+            </trans-unit>
+            <trans-unit id="action.edit">
+                <source>action.edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="action.delete">
+                <source>action.delete</source>
+                <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="action.login">
+                <source>action.login</source>
+                <target>Log in</target>
+            </trans-unit>
+            <trans-unit id="action.logout">
+                <source>action.logout</source>
+                <target>Log out</target>
+            </trans-unit>
+            <trans-unit id="action.back_to_list">
+                <source>action.back_to_list</source>
+                <target>Return to List</target>
+            </trans-unit>
+            <trans-unit id="action.save">
+                <source>action.save</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="title.note_create">
+                <source>title.note_create</source>
+                <target>New Note</target>
+            </trans-unit>
+            <trans-unit id="title.todoitem_list">
+                <source>title.todoitem_list</source>
+                <target>To-Do List</target>
+            </trans-unit>
+            <trans-unit id="label.completed">
+                <source>label.completed</source>
+                <target>Completed</target>
+            </trans-unit>
+            <trans-unit id="title.category_list">
+                <source>title.category_list</source>
+                <target>Categories</target>
+            </trans-unit>
+            <trans-unit id="message.record_not_found">
+                <source>message.record_not_found</source>
+                <target>No record found</target>
+            </trans-unit>
+            <trans-unit id="title.note_details">
+                <source>title.note_details</source>
+                <target>Note #%id%</target>
+            </trans-unit>
+            <trans-unit id="title.note_edit ">
+                <source>title.note_edit </source>
+                <target>Edit Note #%id%</target>
+            </trans-unit>
+            <trans-unit id="label.none">
+                <source>label.none</source>
+                <target>No results</target>
+            </trans-unit>
+            <trans-unit id="label.no">
+                <source>label.no</source>
+                <target>No</target>
+            </trans-unit>
+            <trans-unit id="label.yes">
+                <source>label.yes</source>
+                <target>Yes</target>
+            </trans-unit>
+            <trans-unit id="label.tag">
+                <source>label.tag</source>
+                <target>Tags</target>
+            </trans-unit>
+            <trans-unit id="title.note_delete">
+                <source>title.note_delete</source>
+                <target>Delete note: %title%</target>
+            </trans-unit>
+            <trans-unit id="title.todoItem_details">
+                <source>title.todoItem_details</source>
+                <target>Todo Item Details #%id%</target>
+            </trans-unit>
+            <trans-unit id="message.edited_successfully">
+                <source>message.edited_successfully</source>
+                <target>Edited successfully</target>
+            </trans-unit>
+            <trans-unit id="message.created_successfully">
+                <source>message.created_successfully</source>
+                <target>Created successfully</target>
+            </trans-unit>
+            <trans-unit id="message.registered_successfully">
+                <source>message.registered_successfully</source>
+                <target>Registered successfully!</target>
+            </trans-unit>
+            <trans-unit id="message.deleted_successfully">
+                <source>message.deleted_successfully</source>
+                <target>Deleted successfully</target>
+            </trans-unit>
+            <trans-unit id="action.manage_account">
+                <source>action.manage_account</source>
+                <target>Manage account</target>
+            </trans-unit>
+            <trans-unit id="label.user_manager">
+                <source>label.user_manager</source>
+                <target>Manage users</target>
+            </trans-unit>
+            <trans-unit id="title.register">
+                <source>title.register</source>
+                <target>Register</target>
+            </trans-unit>
+            <trans-unit id="title.signin">
+                <source>title.signin</source>
+                <target>Sign in</target>
+            </trans-unit>
+            <trans-unit id="Email">
+                <source>Email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="Password">
+                <source>Password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="message.category_contains_notes">
+                <source>message.category_contains_notes</source>
+                <target>Category contains notes</target>
+            </trans-unit>
+            <trans-unit id="title.user_details">
+                <source>title.user_details</source>
+                <target>User details</target>
+            </trans-unit>
+            <trans-unit id="label.email">
+                <source>label.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="label.roles">
+                <source>label.roles</source>
+                <target>Roles</target>
+            </trans-unit>
+            <trans-unit id="title.user_create">
+                <source>title.user_create</source>
+                <target>Create user</target>
+            </trans-unit>
+            <trans-unit id="title.user_edit">
+                <source>title.user_edit</source>
+                <target>Edit user: %email%</target>
+            </trans-unit>
+            <trans-unit id="title.user_delete">
+                <source>title.user_delete</source>
+                <target>Delete user: %email%</target>
+            </trans-unit>
+            <trans-unit id="message.form_error">
+                <source>message.form_error</source>
+                <target>Invalid form input</target>
+            </trans-unit>
+            <trans-unit id="title.note_edit">
+                <source>title.note_edit</source>
+                <target>Edit note</target>
+            </trans-unit>
+            <trans-unit id="title.tag_details">
+                <source>title.tag_details</source>
+                <target>Tag details</target>
+            </trans-unit>
+            <trans-unit id="title.tag_create">
+                <source>title.tag_create</source>
+                <target>Create tag</target>
+            </trans-unit>
+            <trans-unit id="title.tag_edit">
+                <source>title.tag_edit</source>
+                <target>Edit tag</target>
+            </trans-unit>
+            <trans-unit id="title.tag_delete">
+                <source>title.tag_delete</source>
+                <target>Delete tag</target>
+            </trans-unit>
+            <trans-unit id="title.tag_list">
+                <source>title.tag_list</source>
+                <target>Tag list</target>
+            </trans-unit>
+            <trans-unit id="title.category_details">
+                <source>title.category_details</source>
+                <target>Category details</target>
+            </trans-unit>
+            <trans-unit id="title.category_create">
+                <source>title.category_create</source>
+                <target>Create category</target>
+            </trans-unit>
+            <trans-unit id="title.category_edit">
+                <source>title.category_edit</source>
+                <target>Edit category</target>
+            </trans-unit>
+            <trans-unit id="title.category_delete">
+                <source>title.category_delete</source>
+                <target>Delete category</target>
+            </trans-unit>
+            <trans-unit id="action.register">
+                <source>action.register</source>
+                <target>Register</target>
+            </trans-unit>
+            <trans-unit id="title.todoitem_create">
+                <source>title.todoitem_create</source>
+                <target>Create Todo Item</target>
+            </trans-unit>
+            <trans-unit id="title.todoitem_edit">
+                <source>title.todoitem_edit</source>
+                <target>Edit Todo Item</target>
+            </trans-unit>
+            <trans-unit id="title.todoitem_delete">
+                <source>title.todoitem_delete</source>
+                <target>Delete Todo Item</target>
+            </trans-unit>
+            <trans-unit id="title.user_list">
+                <source>title.user_list</source>
+                <target>User list</target>
+            </trans-unit>
+            <trans-unit id="label.log_in">
+                <source>label.log_in</source>
+                <target>Log in!</target>
+            </trans-unit>
+            <trans-unit id="label.You_re_logged_in_as">
+                <source>label.You_re_logged_in_as</source>
+                <target>You're not logged in</target>
+            </trans-unit>
+            <trans-unit id="title.log_out">
+                <source>title.log_out</source>
+                <target>Log out</target>
+            </trans-unit>
+            <trans-unit id="label.please_sign_in">
+                <source>label.please_sign_in</source>
+                <target>Please sign in</target>
+            </trans-unit>
+            <trans-unit id="label.password">
+                <source>label.password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="label.password_repeat">
+                <source>label.password_repeat</source>
+                <target>Repeat password</target>
+            </trans-unit>
+            <trans-unit id="title.user_edit_self">
+                <source>title.user_edit_self</source>
+                <target>Edit your account</target>
+            </trans-unit>
+            <trans-unit id="message.you_cant_delete_comment">
+                <source>message.you_cant_delete_comment</source>
+                <target>You can't delete this comment</target>
+            </trans-unit>
+            <trans-unit id="message.comment_created_successfully">
+                <source>message.comment_created_successfully</source>
+                <target>Comment created successfully</target>
+            </trans-unit>
+            <trans-unit id="title.comment_delete">
+                <source>title.comment_delete</source>
+                <target>Delete comment</target>
+            </trans-unit>
+            <trans-unit id="title.post_comment">
+                <source>title.post_comment</source>
+                <target>Post a comment</target>
+            </trans-unit>
+            <trans-unit id="title.comments">
+                <source>title.comments</source>
+                <target>Comments: </target>
+            </trans-unit>
+            <trans-unit id="message.can_not_create_a_comment">
+                <source>message.can_not_create_a_comment</source>
+                <target>You have to be logged in to post a comment </target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,6 @@
+{% include 'default/_form.html.twig' with {
+    page_title: is_granted('ROLE_ADMIN') ? 'title.user_edit'|trans({'%email%': user.email|default('')}) : 'title.user_edit_self'|trans,
+    form: form,
+    submit_label: 'action.edit'|trans,
+    back_to_list_path: is_granted('ROLE_ADMIN') ? 'user_index' : 'note_index',
+} %}
