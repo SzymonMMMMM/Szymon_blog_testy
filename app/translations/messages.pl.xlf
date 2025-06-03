@@ -22,9 +22,9 @@
                 <source>label.tags</source>
                 <target>Tagi</target>
             </trans-unit>
-            <trans-unit id="label.notes">
-                <source>label.notes</source>
-                <target>Notatki</target>
+            <trans-unit id="label.posts">
+                <source>label.posts</source>
+                <target>Posty</target>
             </trans-unit>
             <trans-unit id="label.to-do_list">
                 <source>label.to-do_list</source>
@@ -50,9 +50,9 @@
                 <source>message.empty_list</source>
                 <target>Lista jest pusta.</target>
             </trans-unit>
-            <trans-unit id="title.note_list">
-                <source>title.note_list</source>
-                <target>Lista notatek</target>
+            <trans-unit id="title.post_list">
+                <source>title.post_list</source>
+                <target>Lista postów</target>
             </trans-unit>
             <trans-unit id="action.view">
                 <source>action.view</source>
@@ -86,9 +86,9 @@
                 <source>action.save</source>
                 <target>Zapisz</target>
             </trans-unit>
-            <trans-unit id="title.note_create">
-                <source>title.note_create</source>
-                <target>Nowa notatka</target>
+            <trans-unit id="title.post_create">
+                <source>title.post_create</source>
+                <target>Nowy post</target>
             </trans-unit>
             <trans-unit id="title.todoitem_list">
                 <source>title.todoitem_list</source>
@@ -106,13 +106,13 @@
                 <source>message.record_not_found</source>
                 <target>Nie znaleziono rekordu</target>
             </trans-unit>
-            <trans-unit id="title.note_details">
-                <source>title.note_details</source>
-                <target>Notatka #%id%</target>
+            <trans-unit id="title.post_details">
+                <source>title.post_details</source>
+                <target>Post #%id%</target>
             </trans-unit>
-            <trans-unit id="title.note_edit ">
-                <source>title.note_edit</source>
-                <target>Edycja notatki #%id%</target>
+            <trans-unit id="title.post_edit ">
+                <source>title.post_edit</source>
+                <target>Edycja postu #%id%</target>
             </trans-unit>
             <trans-unit id="label.none">
                 <source>label.none</source>
@@ -130,9 +130,9 @@
                 <source>label.tag</source>
                 <target>Tagi</target>
             </trans-unit>
-            <trans-unit id="title.note_delete">
-                <source>title.note_delete</source>
-                <target>Usuń notatkę: %title%</target>
+            <trans-unit id="title.post_delete">
+                <source>title.post_delete</source>
+                <target>Usuń post: %title%</target>
             </trans-unit>
             <trans-unit id="title.todoItem_details">
                 <source>title.todoItem_details</source>
@@ -170,9 +170,9 @@
                 <source>title.signin</source>
                 <target>Zaloguj się</target>
             </trans-unit>
-            <trans-unit id="message.category_contains_notes">
-                <source>message.category_contains_notes</source>
-                <target>Kategoria posiada notatki</target>
+            <trans-unit id="message.category_contains_posts">
+                <source>message.category_contains_posts</source>
+                <target>Kategoria posiada posty</target>
             </trans-unit>
             <trans-unit id="title.user_details">
                 <source>title.user_details</source>
@@ -202,9 +202,9 @@
                 <source>message.form_error</source>
                 <target>Błąd walidacji formularza</target>
             </trans-unit>
-            <trans-unit id="title.note_edit">
-                <source>title.note_edit</source>
-                <target>Edycja notatki</target>
+            <trans-unit id="title.post_edit">
+                <source>title.post_edit</source>
+                <target>Edycja postu</target>
             </trans-unit>
             <trans-unit id="title.tag_details">
                 <source>title.tag_details</source>

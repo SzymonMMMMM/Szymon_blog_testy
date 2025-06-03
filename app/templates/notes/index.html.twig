@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.note_list'|trans }}
+    {{ 'title.post_list'|trans }}
 {% endblock %}
 
 {% block body %}
     {% include 'default/_three_way_toggle_button.html.twig' with {
-        toggle_position: 'notes_position',
+        toggle_position: 'posts_position',
     }%}
-    <h1 class="display-1">{{ 'title.note_list'|trans }}</h1>
+    <h1 class="display-1">{{ 'title.post_list'|trans }}</h1>
     {% if pagination is defined and pagination.items|length %}
 
         <div class="navigation text-center">
@@ -18,27 +18,27 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'notes.id') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 'notes.createdAt') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 'notes.updatedAt') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'notes.title') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.content'|trans, 'notes.content') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'posts.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 'posts.createdAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 'posts.updatedAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'posts.title') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.content'|trans, 'posts.content') }}</th>
                 <th>{{ 'label.tag'|trans }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.category'|trans, 'category.title') }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
             <tbody>
-            {% for note in pagination.items %}
+            {% for post in pagination.items %}
                 <tr>
-                    <td>{{ note.id }}</td>
-                    <td>{{ note.createdAt|format_date('long') }}</td>
-                    <td>{{ note.updatedAt|format_date('long') }}</td>
-                    <td>{{ note.title }}</td>
-                    <td>{{ note.content }}</td>
+                    <td>{{ post.id }}</td>
+                    <td>{{ post.createdAt|format_date('long') }}</td>
+                    <td>{{ post.updatedAt|format_date('long') }}</td>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.content }}</td>
                     <td>
-                        {% if note.tags is defined and note.tags|length %}
-                            {% for tag in note.tags %}
+                        {% if post.tags is defined and post.tags|length %}
+                            {% for tag in post.tags %}
                                 <a class="btn btn-outline-secondary btn-sm" href="{{ url('note_index', {'filters.tag_id' : tag.id}) }}" title="{{ tag.title }}">
                                     {{ tag.title }}
                                 </a>
@@ -48,18 +48,18 @@
                         {% endif %}
                     </td>
                     <td>
-                        <a class="btn btn-outline-dark" href="{{ url('note_index', {'filters.category_id' : note.category.id}) }}" title="{{ note.category.title }}">
-                            {{ note.category.title }}
+                        <a class="btn btn-outline-dark" href="{{ url('note_index', {'filters.category_id' : post.category.id}) }}" title="{{ post.category.title }}">
+                            {{ post.category.title }}
                         </a>
                     </td>
                     <td  class="action-links">
-                        <a class="btn btn-outline-primary" href="{{ url('note_show', {id: note.id}) }}" title="{{ 'action.view'|trans }}">
+                        <a class="btn btn-outline-primary" href="{{ url('note_show', {id: post.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}
                         </a>
-                        <a class="btn btn-outline-success" href="{{ url('note_edit', {id: note.id}) }}" title="{{ 'action.edit'|trans }}">
+                        <a class="btn btn-outline-success" href="{{ url('note_edit', {id: post.id}) }}" title="{{ 'action.edit'|trans }}">
                             {{ 'action.edit'|trans }}
                         </a>
-                        <a class="btn btn-outline-danger" href="{{ url('note_delete', {id: note.id}) }}" title="{{ 'action.delete'|trans }}">
+                        <a class="btn btn-outline-danger" href="{{ url('note_delete', {id: post.id}) }}" title="{{ 'action.delete'|trans }}">
                             {{ 'action.delete'|trans }}
                         </a>
                     </td>
@@ -75,4 +75,4 @@
     {% include 'default/_add_button.html.twig' with {
         name_create: url('note_create')
     } %}
-{% endblock  %}
+{% endblock %}

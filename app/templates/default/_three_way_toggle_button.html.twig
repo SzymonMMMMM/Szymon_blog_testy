@@ -10,9 +10,9 @@ parameters:
     {% endblock %}
 {% endif %}
 <div class="tw-toggle responsive-toggle">
-    <input title="notes" {% if toggle_position == 'notes_position' %}checked{% endif %}
+    <input title="posts" {% if toggle_position == 'posts_position' %}checked{% endif %}
             type="radio" name="toggle" value="false" onclick="location.href='{{ url('note_index') }}';">
-    <label class="toggle toggle-yes">{{ 'label.notes'|trans }}</label>
+    <label class="toggle toggle-yes">{{ 'label.posts'|trans }}</label>
     <input title="todo-list" {% if toggle_position == 'todoitem_position' %}checked{% endif %}
             type="radio" name="toggle" value="-1" onclick="location.href='{{ url('todoitem_index') }}';">
     <label class="toggle toggle-yes">{{ 'label.to-do_list'|trans }}</label>

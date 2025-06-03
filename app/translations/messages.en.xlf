@@ -22,9 +22,9 @@
                 <source>label.tags</source>
                 <target>Tags</target>
             </trans-unit>
-            <trans-unit id="label.notes">
-                <source>label.notes</source>
-                <target>Notes</target>
+            <trans-unit id="label.posts">
+                <source>label.posts</source>
+                <target>Posts</target>
             </trans-unit>
             <trans-unit id="label.to-do_list">
                 <source>label.to-do_list</source>
@@ -50,9 +50,9 @@
                 <source>message.empty_list</source>
                 <target>List is empty.</target>
             </trans-unit>
-            <trans-unit id="title.note_list">
-                <source>title.note_list</source>
-                <target>Notes list</target>
+            <trans-unit id="title.post_list">
+                <source>title.post_list</source>
+                <target>Posts list</target>
             </trans-unit>
             <trans-unit id="action.view">
                 <source>action.view</source>
@@ -86,9 +86,9 @@
                 <source>action.save</source>
                 <target>Save</target>
             </trans-unit>
-            <trans-unit id="title.note_create">
-                <source>title.note_create</source>
-                <target>New Note</target>
+            <trans-unit id="title.post_create">
+                <source>title.post_create</source>
+                <target>New Post</target>
             </trans-unit>
             <trans-unit id="title.todoitem_list">
                 <source>title.todoitem_list</source>
@@ -106,13 +106,13 @@
                 <source>message.record_not_found</source>
                 <target>No record found</target>
             </trans-unit>
-            <trans-unit id="title.note_details">
-                <source>title.note_details</source>
-                <target>Note #%id%</target>
+            <trans-unit id="title.post_details">
+                <source>title.post_details</source>
+                <target>Post #%id%</target>
             </trans-unit>
-            <trans-unit id="title.note_edit ">
-                <source>title.note_edit </source>
-                <target>Edit Note #%id%</target>
+            <trans-unit id="title.post_edit ">
+                <source>title.post_edit </source>
+                <target>Edit Post #%id%</target>
             </trans-unit>
             <trans-unit id="label.none">
                 <source>label.none</source>
@@ -130,9 +130,9 @@
                 <source>label.tag</source>
                 <target>Tags</target>
             </trans-unit>
-            <trans-unit id="title.note_delete">
-                <source>title.note_delete</source>
-                <target>Delete note: %title%</target>
+            <trans-unit id="title.post_delete">
+                <source>title.post_delete</source>
+                <target>Delete post: %title%</target>
             </trans-unit>
             <trans-unit id="title.todoItem_details">
                 <source>title.todoItem_details</source>
@@ -178,9 +178,9 @@
                 <source>Password</source>
                 <target>Password</target>
             </trans-unit>
-            <trans-unit id="message.category_contains_notes">
-                <source>message.category_contains_notes</source>
-                <target>Category contains notes</target>
+            <trans-unit id="message.category_contains_posts">
+                <source>message.category_contains_posts</source>
+                <target>Category contains posts</target>
             </trans-unit>
             <trans-unit id="title.user_details">
                 <source>title.user_details</source>
@@ -210,9 +210,9 @@
                 <source>message.form_error</source>
                 <target>Invalid form input</target>
             </trans-unit>
-            <trans-unit id="title.note_edit">
-                <source>title.note_edit</source>
-                <target>Edit note</target>
+            <trans-unit id="title.post_edit">
+                <source>title.post_edit</source>
+                <target>Edit post</target>
             </trans-unit>
             <trans-unit id="title.tag_details">
                 <source>title.tag_details</source>
