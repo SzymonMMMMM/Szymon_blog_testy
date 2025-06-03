@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.post_details'|trans({'%id%': post.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.post_details'|trans({'%id%':post.id|default('')}) }}</h1>
+    {% if post is defined and post|length %}
+        <dl class="dl-horizontal">
+            <dt>{{ 'label.id'|trans }}</dt>
+            <dd>{{ post.id }}</dd>
+            <dt>{{ 'label.created_at'|trans }}</dt>
+            <dd>{{ post.createdAt|format_date('long') }}</dd>
+            <dt>{{ 'label.updated_at'|trans }}</dt>
+            <dd>{{ post.updatedAt|format_date('long') }}</dd>
+            <dt>{{ 'label.title'|trans }}</dt>
+            <dd>{{  post.title }}</dd>
+            <dt>{{ 'label.content'|trans }}</dt>
+            <dd>{{  post.content }}</dd>
+        </dl>
+        <p>
+            <a href="{{ url('post_index') }}" title="{{ 'action.back_to_list'|trans }}">
+                {{ 'action.back_to_list'|trans }}
+            </a>
+        </p>
+
+        <br>
+        <h2>{{ 'title.post_comment'|trans }}</h2>
+        {{ form_start(form) }}
+        {% if false == form.vars.valid %}
+            {% include 'default/_single_alert_message.html.twig' with {
+                type: 'danger',
+                message: 'message.form_error'|trans,
+            }%}
+        {% endif %}
+        {{ form_widget(form) }}
+        <div class="form-group row float-sm-right">
+            <input type="submit" value="{{ 'action.post'|trans }}" class="btn btn-primary"/>
+        </div>
+        <br>
+        <h1>{{ 'title.comments'|trans }}</h1>
+        {% if post is defined and post|length %}
+            <table class="table table-striped">
+                {% for comments in comment %}
+                    <tr>
+                        <td>
+                            <h5>{{ comments.user.email }}</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ comments.content }}</td>
+                        <td>
+                            <a class="btn btn-outline-danger" href="{{ url('comment_delete', {id: comments.id}) }}" title="{{ 'action.delete'|trans }}">
+                                {{ 'action.delete'|trans }}
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+    {% else %}
+        <p>
+            {{ 'message.record_not_found'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}

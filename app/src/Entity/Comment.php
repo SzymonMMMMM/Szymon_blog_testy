@@ -13,7 +13,7 @@ class Comment
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 65535)]
+    #[ORM\Column(length: 15000)]
     private ?string $content = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
@@ -22,7 +22,7 @@ class Comment
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Note $post = null;
+    private ?Post $post = null;
 
     public function getId(): ?int
     {
@@ -53,12 +53,12 @@ class Comment
         return $this;
     }
 
-    public function getPost(): ?Note
+    public function getPost(): ?Post
     {
         return $this->post;
     }
 
-    public function setPost(?Note $post): self
+    public function setPost(?Post $post): self
     {
         $this->post = $post;
 

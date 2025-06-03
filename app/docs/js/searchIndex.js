@@ -88,7 +88,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Controller\\NoteController\u003A\u003A\u0024noteService",
             "name": "noteService",
-            "summary": "Note\u0020Service.",
+            "summary": "Post\u0020Service.",
             "url": "classes/App-Controller-NoteController.html#property_noteService"
         },                {
             "fqsen": "\\App\\Controller\\NoteController\u003A\u003A\u0024translator",
@@ -336,42 +336,42 @@ Search.appendIndex(
             "summary": "This\u0020method\u0020must\u0020return\u0020an\u0020array\u0020of\u0020fixtures\u0020classes\non\u0020which\u0020the\u0020implementing\u0020class\u0020depends\u0020on.",
             "url": "classes/App-DataFixtures-CategoryFixtures.html#method_getDependencies"
         },                {
-            "fqsen": "\\App\\DataFixtures\\NoteFixtures",
+            "fqsen": "\\App\\DataFixtures\\PostFixtures",
             "name": "NoteFixtures",
             "summary": "Class\u0020NoteFixtures.",
             "url": "classes/App-DataFixtures-NoteFixtures.html"
         },                {
-            "fqsen": "\\App\\DataFixtures\\NoteFixtures\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\DataFixtures\\PostFixtures\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructor.",
             "url": "classes/App-DataFixtures-NoteFixtures.html#method___construct"
         },                {
-            "fqsen": "\\App\\DataFixtures\\NoteFixtures\u003A\u003AloadData\u0028\u0029",
+            "fqsen": "\\App\\DataFixtures\\PostFixtures\u003A\u003AloadData\u0028\u0029",
             "name": "loadData",
             "summary": "Load\u0020data.",
             "url": "classes/App-DataFixtures-NoteFixtures.html#method_loadData"
         },                {
-            "fqsen": "\\App\\DataFixtures\\NoteFixtures\u003A\u003AgetDependencies\u0028\u0029",
+            "fqsen": "\\App\\DataFixtures\\PostFixtures\u003A\u003AgetDependencies\u0028\u0029",
             "name": "getDependencies",
             "summary": "This\u0020method\u0020must\u0020return\u0020an\u0020array\u0020of\u0020fixtures\u0020classes\non\u0020which\u0020the\u0020implementing\u0020class\u0020depends\u0020on.",
             "url": "classes/App-DataFixtures-NoteFixtures.html#method_getDependencies"
         },                {
-            "fqsen": "\\App\\DataFixtures\\NoteFixtures\u003A\u003A\u0024categoryRepository",
+            "fqsen": "\\App\\DataFixtures\\PostFixtures\u003A\u003A\u0024categoryRepository",
             "name": "categoryRepository",
             "summary": "Category\u0020repository.",
             "url": "classes/App-DataFixtures-NoteFixtures.html#property_categoryRepository"
         },                {
-            "fqsen": "\\App\\DataFixtures\\NotesTagsFixtures",
+            "fqsen": "\\App\\DataFixtures\\PostsTagsFixtures",
             "name": "NotesTagsFixtures",
             "summary": "Class\u0020NotesTagsFixtures.",
             "url": "classes/App-DataFixtures-NotesTagsFixtures.html"
         },                {
-            "fqsen": "\\App\\DataFixtures\\NotesTagsFixtures\u003A\u003AloadData\u0028\u0029",
+            "fqsen": "\\App\\DataFixtures\\PostsTagsFixtures\u003A\u003AloadData\u0028\u0029",
             "name": "loadData",
             "summary": "Load\u0020Data.",
             "url": "classes/App-DataFixtures-NotesTagsFixtures.html#method_loadData"
         },                {
-            "fqsen": "\\App\\DataFixtures\\NotesTagsFixtures\u003A\u003AgetDependencies\u0028\u0029",
+            "fqsen": "\\App\\DataFixtures\\PostsTagsFixtures\u003A\u003AgetDependencies\u0028\u0029",
             "name": "getDependencies",
             "summary": "This\u0020method\u0020must\u0020return\u0020an\u0020array\u0020of\u0020fixtures\u0020classes\non\u0020which\u0020the\u0020implementing\u0020class\u0020depends\u0020on.",
             "url": "classes/App-DataFixtures-NotesTagsFixtures.html#method_getDependencies"
@@ -486,132 +486,132 @@ Search.appendIndex(
             "summary": "",
             "url": ""
         },                {
-            "fqsen": "\\App\\Entity\\Note",
+            "fqsen": "\\App\\Entity\\Post",
             "name": "Note",
             "summary": "Class\u0020Note.",
             "url": "classes/App-Entity-Note.html"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructor.",
             "url": "classes/App-Entity-Note.html#method___construct"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003AgetId\u0028\u0029",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
             "summary": "Getter\u0020for\u0020Id.",
             "url": "classes/App-Entity-Note.html#method_getId"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003AgetCreatedAt\u0028\u0029",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AgetCreatedAt\u0028\u0029",
             "name": "getCreatedAt",
             "summary": "Getter\u0020for\u0020created\u0020at.",
             "url": "classes/App-Entity-Note.html#method_getCreatedAt"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003AsetCreatedAt\u0028\u0029",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AsetCreatedAt\u0028\u0029",
             "name": "setCreatedAt",
             "summary": "Setter\u0020for\u0020created\u0020at.",
             "url": "classes/App-Entity-Note.html#method_setCreatedAt"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003AgetUpdatedAt\u0028\u0029",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AgetUpdatedAt\u0028\u0029",
             "name": "getUpdatedAt",
             "summary": "Getter\u0020for\u0020updated\u0020at.",
             "url": "classes/App-Entity-Note.html#method_getUpdatedAt"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003AsetUpdatedAt\u0028\u0029",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AsetUpdatedAt\u0028\u0029",
             "name": "setUpdatedAt",
             "summary": "Setter\u0020for\u0020updated\u0020at.",
             "url": "classes/App-Entity-Note.html#method_setUpdatedAt"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003AgetTitle\u0028\u0029",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AgetTitle\u0028\u0029",
             "name": "getTitle",
             "summary": "Getter\u0020for\u0020title.",
             "url": "classes/App-Entity-Note.html#method_getTitle"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003AsetTitle\u0028\u0029",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AsetTitle\u0028\u0029",
             "name": "setTitle",
             "summary": "Setter\u0020for\u0020title.",
             "url": "classes/App-Entity-Note.html#method_setTitle"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003AgetContent\u0028\u0029",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AgetContent\u0028\u0029",
             "name": "getContent",
             "summary": "Getter\u0020for\u0020content.",
             "url": "classes/App-Entity-Note.html#method_getContent"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003AsetContent\u0028\u0029",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AsetContent\u0028\u0029",
             "name": "setContent",
             "summary": "Setter\u0020for\u0020content.",
             "url": "classes/App-Entity-Note.html#method_setContent"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003AgetCategory\u0028\u0029",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AgetCategory\u0028\u0029",
             "name": "getCategory",
             "summary": "Getter\u0020for\u0020category.",
             "url": "classes/App-Entity-Note.html#method_getCategory"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003AsetCategory\u0028\u0029",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AsetCategory\u0028\u0029",
             "name": "setCategory",
             "summary": "Setter\u0020for\u0020category.",
             "url": "classes/App-Entity-Note.html#method_setCategory"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003AgetTags\u0028\u0029",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AgetTags\u0028\u0029",
             "name": "getTags",
             "summary": "Getter\u0020for\u0020tags.",
             "url": "classes/App-Entity-Note.html#method_getTags"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003AaddTag\u0028\u0029",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AaddTag\u0028\u0029",
             "name": "addTag",
             "summary": "Add\u0020tag.",
             "url": "classes/App-Entity-Note.html#method_addTag"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003AremoveTag\u0028\u0029",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AremoveTag\u0028\u0029",
             "name": "removeTag",
             "summary": "Remove\u0020tag.",
             "url": "classes/App-Entity-Note.html#method_removeTag"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003AgetAuthor\u0028\u0029",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AgetAuthor\u0028\u0029",
             "name": "getAuthor",
             "summary": "Getter\u0020for\u0020author.",
             "url": "classes/App-Entity-Note.html#method_getAuthor"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003AsetAuthor\u0028\u0029",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003AsetAuthor\u0028\u0029",
             "name": "setAuthor",
             "summary": "Setter\u0020for\u0020author.",
             "url": "classes/App-Entity-Note.html#method_setAuthor"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003A\u0024id",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003A\u0024id",
             "name": "id",
             "summary": "Primary\u0020key.",
             "url": "classes/App-Entity-Note.html#property_id"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003A\u0024createdAt",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003A\u0024createdAt",
             "name": "createdAt",
             "summary": "Created\u0020at.",
             "url": "classes/App-Entity-Note.html#property_createdAt"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003A\u0024updatedAt",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003A\u0024updatedAt",
             "name": "updatedAt",
             "summary": "Updated\u0020at.",
             "url": "classes/App-Entity-Note.html#property_updatedAt"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003A\u0024title",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003A\u0024title",
             "name": "title",
             "summary": "Title.",
             "url": "classes/App-Entity-Note.html#property_title"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003A\u0024content",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003A\u0024content",
             "name": "content",
             "summary": "Content.",
             "url": "classes/App-Entity-Note.html#property_content"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003A\u0024category",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003A\u0024category",
             "name": "category",
             "summary": "Category.",
             "url": "classes/App-Entity-Note.html#property_category"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003A\u0024tags",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003A\u0024tags",
             "name": "tags",
             "summary": "Tags.",
             "url": "classes/App-Entity-Note.html#property_tags"
         },                {
-            "fqsen": "\\App\\Entity\\Note\u003A\u003A\u0024author",
+            "fqsen": "\\App\\Entity\\Post\u003A\u003A\u0024author",
             "name": "author",
             "summary": "Author.",
             "url": "classes/App-Entity-Note.html#property_author"
@@ -861,32 +861,32 @@ Search.appendIndex(
             "summary": "Returns\u0020the\u0020prefix\u0020of\u0020the\u0020template\u0020block\u0020name\u0020for\u0020this\u0020type.",
             "url": "classes/App-Form-Type-CategoryType.html#method_getBlockPrefix"
         },                {
-            "fqsen": "\\App\\Form\\Type\\NoteType",
+            "fqsen": "\\App\\Form\\Type\\PostType",
             "name": "NoteType",
             "summary": "Class\u0020NoteType.",
             "url": "classes/App-Form-Type-NoteType.html"
         },                {
-            "fqsen": "\\App\\Form\\Type\\NoteType\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Form\\Type\\PostType\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructor.",
             "url": "classes/App-Form-Type-NoteType.html#method___construct"
         },                {
-            "fqsen": "\\App\\Form\\Type\\NoteType\u003A\u003AbuildForm\u0028\u0029",
+            "fqsen": "\\App\\Form\\Type\\PostType\u003A\u003AbuildForm\u0028\u0029",
             "name": "buildForm",
             "summary": "Builds\u0020the\u0020form.",
             "url": "classes/App-Form-Type-NoteType.html#method_buildForm"
         },                {
-            "fqsen": "\\App\\Form\\Type\\NoteType\u003A\u003AconfigureOptions\u0028\u0029",
+            "fqsen": "\\App\\Form\\Type\\PostType\u003A\u003AconfigureOptions\u0028\u0029",
             "name": "configureOptions",
             "summary": "Configures\u0020the\u0020options\u0020for\u0020this\u0020type.",
             "url": "classes/App-Form-Type-NoteType.html#method_configureOptions"
         },                {
-            "fqsen": "\\App\\Form\\Type\\NoteType\u003A\u003AgetBlockPrefix\u0028\u0029",
+            "fqsen": "\\App\\Form\\Type\\PostType\u003A\u003AgetBlockPrefix\u0028\u0029",
             "name": "getBlockPrefix",
             "summary": "Returns\u0020the\u0020prefix\u0020of\u0020the\u0020template\u0020block\u0020name\u0020for\u0020this\u0020type.",
             "url": "classes/App-Form-Type-NoteType.html#method_getBlockPrefix"
         },                {
-            "fqsen": "\\App\\Form\\Type\\NoteType\u003A\u003A\u0024tagsDataTransformer",
+            "fqsen": "\\App\\Form\\Type\\PostType\u003A\u003A\u0024tagsDataTransformer",
             "name": "tagsDataTransformer",
             "summary": "Tags\u0020data\u0020transformer.",
             "url": "classes/App-Form-Type-NoteType.html#property_tagsDataTransformer"
@@ -1016,52 +1016,52 @@ Search.appendIndex(
             "summary": "Items\u0020per\u0020page.",
             "url": "classes/App-Repository-CategoryRepository.html#constant_PAGINATOR_ITEMS_PER_PAGE"
         },                {
-            "fqsen": "\\App\\Repository\\NoteRepository",
+            "fqsen": "\\App\\Repository\\PostRepository",
             "name": "NoteRepository",
             "summary": "",
             "url": "classes/App-Repository-NoteRepository.html"
         },                {
-            "fqsen": "\\App\\Repository\\NoteRepository\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Repository\\PostRepository\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructor.",
             "url": "classes/App-Repository-NoteRepository.html#method___construct"
         },                {
-            "fqsen": "\\App\\Repository\\NoteRepository\u003A\u003Asave\u0028\u0029",
+            "fqsen": "\\App\\Repository\\PostRepository\u003A\u003Asave\u0028\u0029",
             "name": "save",
             "summary": "Save\u0020entity.",
             "url": "classes/App-Repository-NoteRepository.html#method_save"
         },                {
-            "fqsen": "\\App\\Repository\\NoteRepository\u003A\u003Adelete\u0028\u0029",
+            "fqsen": "\\App\\Repository\\PostRepository\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
             "summary": "Delete\u0020entity.",
             "url": "classes/App-Repository-NoteRepository.html#method_delete"
         },                {
-            "fqsen": "\\App\\Repository\\NoteRepository\u003A\u003AqueryAll\u0028\u0029",
+            "fqsen": "\\App\\Repository\\PostRepository\u003A\u003AqueryAll\u0028\u0029",
             "name": "queryAll",
             "summary": "Query\u0020all\u0020records.",
             "url": "classes/App-Repository-NoteRepository.html#method_queryAll"
         },                {
-            "fqsen": "\\App\\Repository\\NoteRepository\u003A\u003AqueryByAuthor\u0028\u0029",
+            "fqsen": "\\App\\Repository\\PostRepository\u003A\u003AqueryByAuthor\u0028\u0029",
             "name": "queryByAuthor",
             "summary": "Query\u0020notes\u0020by\u0020author.",
             "url": "classes/App-Repository-NoteRepository.html#method_queryByAuthor"
         },                {
-            "fqsen": "\\App\\Repository\\NoteRepository\u003A\u003AcountByCategory\u0028\u0029",
+            "fqsen": "\\App\\Repository\\PostRepository\u003A\u003AcountByCategory\u0028\u0029",
             "name": "countByCategory",
             "summary": "Count\u0020notes\u0020by\u0020category.",
             "url": "classes/App-Repository-NoteRepository.html#method_countByCategory"
         },                {
-            "fqsen": "\\App\\Repository\\NoteRepository\u003A\u003AapplyFiltersToList\u0028\u0029",
+            "fqsen": "\\App\\Repository\\PostRepository\u003A\u003AapplyFiltersToList\u0028\u0029",
             "name": "applyFiltersToList",
             "summary": "Apply\u0020filters\u0020to\u0020paginated\u0020list.",
             "url": "classes/App-Repository-NoteRepository.html#method_applyFiltersToList"
         },                {
-            "fqsen": "\\App\\Repository\\NoteRepository\u003A\u003AgetOrCreateQueryBuilder\u0028\u0029",
+            "fqsen": "\\App\\Repository\\PostRepository\u003A\u003AgetOrCreateQueryBuilder\u0028\u0029",
             "name": "getOrCreateQueryBuilder",
             "summary": "Get\u0020or\u0020create\u0020new\u0020query\u0020builder.",
             "url": "classes/App-Repository-NoteRepository.html#method_getOrCreateQueryBuilder"
         },                {
-            "fqsen": "\\App\\Repository\\NoteRepository\u003A\u003APAGINATOR_ITEMS_PER_PAGE",
+            "fqsen": "\\App\\Repository\\PostRepository\u003A\u003APAGINATOR_ITEMS_PER_PAGE",
             "name": "PAGINATOR_ITEMS_PER_PAGE",
             "summary": "Items\u0020per\u0020page.",
             "url": "classes/App-Repository-NoteRepository.html#constant_PAGINATOR_ITEMS_PER_PAGE"
@@ -1323,7 +1323,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Service\\CategoryService\u003A\u003A\u0024noteRepository",
             "name": "noteRepository",
-            "summary": "Note\u0020repository.",
+            "summary": "Post\u0020repository.",
             "url": "classes/App-Service-CategoryService.html#property_noteRepository"
         },                {
             "fqsen": "\\App\\Service\\CategoryService\u003A\u003A\u0024paginator",
@@ -1361,77 +1361,77 @@ Search.appendIndex(
             "summary": "Find\u0020by\u0020id.",
             "url": "classes/App-Service-CategoryServiceInterface.html#method_findOneById"
         },                {
-            "fqsen": "\\App\\Service\\NoteService",
+            "fqsen": "\\App\\Service\\PostService",
             "name": "NoteService",
             "summary": "Class\u0020NoteService.",
             "url": "classes/App-Service-NoteService.html"
         },                {
-            "fqsen": "\\App\\Service\\NoteService\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\App\\Service\\PostService\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructor.",
             "url": "classes/App-Service-NoteService.html#method___construct"
         },                {
-            "fqsen": "\\App\\Service\\NoteService\u003A\u003AgetPaginatedList\u0028\u0029",
+            "fqsen": "\\App\\Service\\PostService\u003A\u003AgetPaginatedList\u0028\u0029",
             "name": "getPaginatedList",
             "summary": "Get\u0020paginated\u0020list.",
             "url": "classes/App-Service-NoteService.html#method_getPaginatedList"
         },                {
-            "fqsen": "\\App\\Service\\NoteService\u003A\u003Asave\u0028\u0029",
+            "fqsen": "\\App\\Service\\PostService\u003A\u003Asave\u0028\u0029",
             "name": "save",
             "summary": "Save\u0020entity.",
             "url": "classes/App-Service-NoteService.html#method_save"
         },                {
-            "fqsen": "\\App\\Service\\NoteService\u003A\u003Adelete\u0028\u0029",
+            "fqsen": "\\App\\Service\\PostService\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
             "summary": "Delete\u0020entity.",
             "url": "classes/App-Service-NoteService.html#method_delete"
         },                {
-            "fqsen": "\\App\\Service\\NoteService\u003A\u003AprepareFilters\u0028\u0029",
+            "fqsen": "\\App\\Service\\PostService\u003A\u003AprepareFilters\u0028\u0029",
             "name": "prepareFilters",
             "summary": "Prepare\u0020filters\u0020for\u0020the\u0020notes\u0020list.",
             "url": "classes/App-Service-NoteService.html#method_prepareFilters"
         },                {
-            "fqsen": "\\App\\Service\\NoteService\u003A\u003A\u0024categoryService",
+            "fqsen": "\\App\\Service\\PostService\u003A\u003A\u0024categoryService",
             "name": "categoryService",
             "summary": "Category\u0020service.",
             "url": "classes/App-Service-NoteService.html#property_categoryService"
         },                {
-            "fqsen": "\\App\\Service\\NoteService\u003A\u003A\u0024paginator",
+            "fqsen": "\\App\\Service\\PostService\u003A\u003A\u0024paginator",
             "name": "paginator",
             "summary": "Paginator.",
             "url": "classes/App-Service-NoteService.html#property_paginator"
         },                {
-            "fqsen": "\\App\\Service\\NoteService\u003A\u003A\u0024tagService",
+            "fqsen": "\\App\\Service\\PostService\u003A\u003A\u0024tagService",
             "name": "tagService",
             "summary": "Tag\u0020service.",
             "url": "classes/App-Service-NoteService.html#property_tagService"
         },                {
-            "fqsen": "\\App\\Service\\NoteService\u003A\u003A\u0024noteRepository",
+            "fqsen": "\\App\\Service\\PostService\u003A\u003A\u0024noteRepository",
             "name": "noteRepository",
-            "summary": "Note\u0020repository.",
+            "summary": "Post\u0020repository.",
             "url": "classes/App-Service-NoteService.html#property_noteRepository"
         },                {
-            "fqsen": "\\App\\Service\\NoteServiceInterface",
+            "fqsen": "\\App\\Service\\PostServiceInterface",
             "name": "NoteServiceInterface",
             "summary": "Interface\u0020NoteServiceInterface.",
             "url": "classes/App-Service-NoteServiceInterface.html"
         },                {
-            "fqsen": "\\App\\Service\\NoteServiceInterface\u003A\u003AgetPaginatedList\u0028\u0029",
+            "fqsen": "\\App\\Service\\PostServiceInterface\u003A\u003AgetPaginatedList\u0028\u0029",
             "name": "getPaginatedList",
             "summary": "Get\u0020paginated\u0020list.",
             "url": "classes/App-Service-NoteServiceInterface.html#method_getPaginatedList"
         },                {
-            "fqsen": "\\App\\Service\\NoteServiceInterface\u003A\u003Asave\u0028\u0029",
+            "fqsen": "\\App\\Service\\PostServiceInterface\u003A\u003Asave\u0028\u0029",
             "name": "save",
             "summary": "Save\u0020entity.",
             "url": "classes/App-Service-NoteServiceInterface.html#method_save"
         },                {
-            "fqsen": "\\App\\Service\\NoteServiceInterface\u003A\u003Adelete\u0028\u0029",
+            "fqsen": "\\App\\Service\\PostServiceInterface\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
             "summary": "Delete\u0020entity.",
             "url": "classes/App-Service-NoteServiceInterface.html#method_delete"
         },                {
-            "fqsen": "\\App\\Service\\NoteServiceInterface\u003A\u003AprepareFilters\u0028\u0029",
+            "fqsen": "\\App\\Service\\PostServiceInterface\u003A\u003AprepareFilters\u0028\u0029",
             "name": "prepareFilters",
             "summary": "Prepare\u0020filters\u0020for\u0020the\u0020tasks\u0020list.",
             "url": "classes/App-Service-NoteServiceInterface.html#method_prepareFilters"

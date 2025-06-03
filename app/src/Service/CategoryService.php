@@ -7,7 +7,7 @@ namespace App\Service;
 
 use App\Entity\Category;
 use App\Entity\User;
-use App\Repository\NoteRepository;
+use App\Repository\PostRepository;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
@@ -25,9 +25,9 @@ class CategoryService implements CategoryServiceInterface
     private CategoryRepository $categoryRepository;
 
     /**
-     * Note repository.
+     * Post repository.
      */
-    private NoteRepository $noteRepository;
+    private PostRepository $postRepository;
 
     /**
      * Paginator.
@@ -38,12 +38,12 @@ class CategoryService implements CategoryServiceInterface
      * Constructor.
      *
      * @param CategoryRepository $categoryRepository Category repository
-     * @param NoteRepository     $noteRepository     Note repository
+     * @param PostRepository     $postRepository     Post repository
      * @param PaginatorInterface $paginator          Paginator
      */
-    public function __construct(CategoryRepository $categoryRepository, NoteRepository $noteRepository, PaginatorInterface $paginator)
+    public function __construct(CategoryRepository $categoryRepository, PostRepository $postRepository, PaginatorInterface $paginator)
     {
-        $this->noteRepository = $noteRepository;
+        $this->postRepository = $postRepository;
         $this->categoryRepository = $categoryRepository;
         $this->paginator = $paginator;
     }
@@ -95,7 +95,7 @@ class CategoryService implements CategoryServiceInterface
     public function canBeDeleted(Category $category): bool
     {
         try {
-            $result = $this->noteRepository->countByCategory($category);
+            $result = $this->postRepository->countByCategory($category);
 
             return !($result > 0);
         } catch (NoResultException|NonUniqueResultException) {

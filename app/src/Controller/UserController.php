@@ -119,7 +119,7 @@ class UserController extends AbstractController
                 return $this->redirectToRoute('user_index');
             }
 
-            return $this->redirectToRoute('note_index');
+            return $this->redirectToRoute('post_index');
         }
 
         return $this->render(

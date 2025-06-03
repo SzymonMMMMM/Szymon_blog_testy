@@ -8,9 +8,9 @@ namespace App\DataFixtures;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
- * Class NotesTagsFixtures.
+ * Class PostsTagsFixtures.
  */
-class NotesTagsFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
+class PostsTagsFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     /**
      * Load Data.
@@ -20,13 +20,13 @@ class NotesTagsFixtures extends AbstractBaseFixtures implements DependentFixture
         if (null === $this->manager || null === $this->faker) {
             return;
         }
-        $this->createMany(300, 'notes_tags', function () {
-            $note = $this->getRandomReference('notes');
+        $this->createMany(300, 'posts_tags', function () {
+            $post = $this->getRandomReference('posts');
             $tag = $this->getRandomReference('tags');
 
-            $note->addTag($tag);
+            $post->addTag($tag);
 
-            return $note;
+            return $post;
         });
         $this->manager->flush();
     }
@@ -37,12 +37,12 @@ class NotesTagsFixtures extends AbstractBaseFixtures implements DependentFixture
      *
      * @return string[] Array of dependencies
      *
-     * @psalm-return array{0: NoteFixtures::class, 1: TagFixtures::class}
+     * @psalm-return array{0: PostFixtures::class, 1: TagFixtures::class}
      */
     public function getDependencies(): array
     {
         return [
-            NoteFixtures::class,
+            PostFixtures::class,
             TagFixtures::class,
         ];
     }

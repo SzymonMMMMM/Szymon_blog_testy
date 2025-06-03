@@ -1,11 +1,11 @@
 <?php
 /**
- * Note type.
+ * Post type.
  */
 
 namespace App\Form\Type;
 
-use App\Entity\Note;
+use App\Entity\Post;
 use App\Entity\Category;
 use App\Entity\User;
 use App\Repository\CategoryRepository;
@@ -17,9 +17,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Form\DataTransformer\TagsDataTransformer;
 
 /**
- * Class NoteType.
+ * Class PostType.
  */
-class NoteType extends AbstractType
+class PostType extends AbstractType
 {
     /**
      * Tags data transformer.
@@ -110,7 +110,7 @@ class NoteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Note::class,
+            'data_class' => Post::class,
             'author' => null,
         ]);
         $resolver->setRequired('author');
@@ -126,6 +126,6 @@ class NoteType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'note';
+        return 'post';
     }
 }

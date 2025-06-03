@@ -1,11 +1,11 @@
 <?php
 /**
- * Note entity.
+ * Post entity.
  */
 
 namespace App\Entity;
 
-use App\Repository\NoteRepository;
+use App\Repository\PostRepository;
 use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -15,11 +15,11 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class Note.
+ * Class Post.
  */
-#[ORM\Entity(repositoryClass: NoteRepository::class)]
-#[ORM\Table(name: 'notes')]
-class Note
+#[ORM\Entity(repositoryClass: PostRepository::class)]
+#[ORM\Table(name: 'posts')]
+class Post
 {
     /**
      * Primary key.
@@ -90,7 +90,7 @@ class Note
      */
     #[Assert\Valid]
     #[ORM\ManyToMany(targetEntity: Tag::class, fetch: 'EXTRA_LAZY', orphanRemoval: true)]
-    #[ORM\JoinTable(name: 'notes_tags')]
+    #[ORM\JoinTable(name: 'posts_tags')]
     private $tags;
 
     /**

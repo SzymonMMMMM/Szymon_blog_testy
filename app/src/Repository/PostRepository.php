@@ -1,12 +1,12 @@
 <?php
 /**
- * Note repository.
+ * Post repository.
  */
 
 namespace App\Repository;
 
 use App\Entity\Category;
-use App\Entity\Note;
+use App\Entity\Post;
 use App\Entity\Tag;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
@@ -16,14 +16,14 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @extends ServiceEntityRepository<Note>
+ * @extends ServiceEntityRepository<Post>
  *
- * @method Note|null find($id, $lockMode = null, $lockVersion = null)
- * @method Note|null findOneBy(array $criteria, array $orderBy = null)
- * @method Note[]    findAll()
- * @method Note[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Post|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Post|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Post[]    findAll()
+ * @method Post[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class NoteRepository extends ServiceEntityRepository
+class PostRepository extends ServiceEntityRepository
 {
     /**
      * Constructor.
@@ -32,7 +32,7 @@ class NoteRepository extends ServiceEntityRepository
      */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Note::class);
+        parent::__construct($registry, Post::class);
     }
     /**
      * Items per page.
@@ -48,22 +48,22 @@ class NoteRepository extends ServiceEntityRepository
     /**
      * Save entity.
      *
-     * @param Note $note Note entity
+     * @param Post $post Post entity
      */
-    public function save(Note $note): void
+    public function save(Post $post): void
     {
-        $this->_em->persist($note);
+        $this->_em->persist($post);
         $this->_em->flush();
     }
 
     /**
      * Delete entity.
      *
-     * @param Note $note Note entity
+     * @param Post $post Post entity
      */
-    public function delete(Note $note): void
+    public function delete(Post $post): void
     {
-        $this->_em->remove($note);
+        $this->_em->remove($post);
         $this->_em->flush();
     }
 
@@ -78,19 +78,19 @@ class NoteRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->getOrCreateQueryBuilder()
             ->select(
-                'partial notes.{id, createdAt, updatedAt, title, content}',
+                'partial posts.{id, createdAt, updatedAt, title, content}',
                 'partial category.{id, title}',
                 'partial tag.{id, title}'
             )
-            ->join('notes.category', 'category')
-            ->leftJoin('notes.tags', 'tag')
-            ->orderBy('notes.updatedAt', 'DESC');
+            ->join('posts.category', 'category')
+            ->leftJoin('posts.tags', 'tag')
+            ->orderBy('posts.updatedAt', 'DESC');
 
         return $this->applyFiltersToList($queryBuilder, $filters);
     }
 
     /**
-     * Query notes by author.
+     * Query posts by author.
      *
      * @param UserInterface         $user    User entity
      * @param array<string, object> $filters Filters
@@ -101,18 +101,18 @@ class NoteRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->queryAll($filters);
 
-        $queryBuilder->andWhere('notes.author = :author')
+        $queryBuilder->andWhere('posts.author = :author')
             ->setParameter('author', $user);
 
         return $queryBuilder;
     }
 
     /**
-     * Count notes by category.
+     * Count posts by category.
      *
      * @param Category $category Category
      *
-     * @return int Number of notes in category
+     * @return int Number of posts in category
      *
      * @throws NoResultException
      * @throws NonUniqueResultException
@@ -121,8 +121,8 @@ class NoteRepository extends ServiceEntityRepository
     {
         $qb = $this->getOrCreateQueryBuilder();
 
-        return $qb->select($qb->expr()->countDistinct('notes.id'))
-            ->where('notes.category = :category')
+        return $qb->select($qb->expr()->countDistinct('posts.id'))
+            ->where('posts.category = :category')
             ->setParameter(':category', $category)
             ->getQuery()
             ->getSingleScalarResult();
@@ -160,6 +160,6 @@ class NoteRepository extends ServiceEntityRepository
      */
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return $queryBuilder ?? $this->createQueryBuilder('notes');
+        return $queryBuilder ?? $this->createQueryBuilder('posts');
     }
 }

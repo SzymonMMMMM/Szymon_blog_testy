@@ -1,19 +1,19 @@
 <?php
 /**
- * Note service interface.
+ * Post service interface.
  */
 
 namespace App\Service;
 
 use App\Entity\Comment;
-use App\Entity\Note;
+use App\Entity\Post;
 use App\Entity\User;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**
- * Interface NoteServiceInterface.
+ * Interface PostServiceInterface.
  */
-interface NoteServiceInterface
+interface PostServiceInterface
 {
     /**
      * Get paginated list.
@@ -29,9 +29,9 @@ interface NoteServiceInterface
     /**
      * Save entity.
      *
-     * @param Note $note Note entity
+     * @param Post $post Post entity
      */
-    public function save(Note $note): void;
+    public function save(Post $post): void;
 
     /**
      * Save comment.
@@ -43,9 +43,9 @@ interface NoteServiceInterface
     /**
      * Delete entity.
      *
-     * @param Note $note Note entity
+     * @param Post $post Post entity
      */
-    public function delete(Note $note): void;
+    public function delete(Post $post): void;
 
     /**
      * Prepare filters for the tasks list.

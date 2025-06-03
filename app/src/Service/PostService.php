@@ -1,13 +1,13 @@
 <?php
 /**
- * Note service.
+ * Post service.
  */
 
 namespace App\Service;
 
 use App\Entity\Comment;
-use App\Entity\Note;
-use App\Repository\NoteRepository;
+use App\Entity\Post;
+use App\Repository\PostRepository;
 use App\Repository\CommentRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
@@ -15,9 +15,9 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
- * Class NoteService.
+ * Class PostService.
  */
-class NoteService implements NoteServiceInterface
+class PostService implements PostServiceInterface
 {
     /**
      * Category service.
@@ -35,9 +35,9 @@ class NoteService implements NoteServiceInterface
     private TagServiceInterface $tagService;
 
     /**
-     * Note repository.
+     * Post repository.
      */
-    private NoteRepository $noteRepository;
+    private PostRepository $postRepository;
 
     /**
      * Comment repository.
@@ -50,15 +50,15 @@ class NoteService implements NoteServiceInterface
      * @param CategoryServiceInterface $categoryService    Category service
      * @param PaginatorInterface       $paginator          Paginator
      * @param TagServiceInterface      $tagService         Tag service
-     * @param NoteRepository           $noteRepository     Note repository
+     * @param PostRepository           $postRepository     Post repository
      * @param CommentRepository       $commentRepository Comment repository
      */
-    public function __construct(CategoryServiceInterface $categoryService, PaginatorInterface $paginator, TagServiceInterface $tagService, NoteRepository $noteRepository, CommentRepository $commentRepository)
+    public function __construct(CategoryServiceInterface $categoryService, PaginatorInterface $paginator, TagServiceInterface $tagService, PostRepository $postRepository, CommentRepository $commentRepository)
     {
         $this->categoryService = $categoryService;
         $this->paginator = $paginator;
         $this->tagService = $tagService;
-        $this->noteRepository = $noteRepository;
+        $this->postRepository = $postRepository;
         $this->commentRepository = $commentRepository;
     }
 
@@ -77,20 +77,20 @@ class NoteService implements NoteServiceInterface
         $filters = $this->prepareFilters($filters);
         // CHANGED - z queryByAuthor na queryAll
         return $this->paginator->paginate(
-            $this->noteRepository->queryAll($filters),
+            $this->postRepository->queryAll($filters),
             $page,
-            NoteRepository::PAGINATOR_ITEMS_PER_PAGE
+            PostRepository::PAGINATOR_ITEMS_PER_PAGE
         );
     }
 
     /**
      * Save entity.
      *
-     * @param Note $note Note entity
+     * @param Post $post Post entity
      */
-    public function save(Note $note): void
+    public function save(Post $post): void
     {
-        $this->noteRepository->save($note);
+        $this->postRepository->save($post);
     }
 
     /**
@@ -106,15 +106,15 @@ class NoteService implements NoteServiceInterface
     /**
      * Delete entity.
      *
-     * @param Note $note Note entity
+     * @param Post $post Post entity
      */
-    public function delete(Note $note): void
+    public function delete(Post $post): void
     {
-        $this->noteRepository->delete($note);
+        $this->postRepository->delete($post);
     }
 
     /**
-     * Prepare filters for the notes list.
+     * Prepare filters for the posts list.
      *
      * @param array<string, int> $filters Raw filters from request
      *

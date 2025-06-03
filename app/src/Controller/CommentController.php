@@ -60,7 +60,7 @@ class CommentController extends AbstractController
                 $this->translator->trans('message.you_cant_delete_comment')
             );
 
-            return $this->redirectToRoute('note_index');
+            return $this->redirectToRoute('post_index');
         }
 
         $form = $this->createForm(
@@ -81,7 +81,7 @@ class CommentController extends AbstractController
                 $this->translator->trans('message.deleted_successfully')
             );
 
-            return $this->redirectToRoute('note_index');
+            return $this->redirectToRoute('post_index');
         }
 
         return $this->render(

@@ -11,7 +11,7 @@ parameters:
 {% endif %}
 <div class="tw-toggle responsive-toggle">
     <input title="posts" {% if toggle_position == 'posts_position' %}checked{% endif %}
-            type="radio" name="toggle" value="false" onclick="location.href='{{ url('note_index') }}';">
+            type="radio" name="toggle" value="false" onclick="location.href='{{ url('post_index') }}';">
     <label class="toggle toggle-yes">{{ 'label.posts'|trans }}</label>
     <input title="todo-list" {% if toggle_position == 'todoitem_position' %}checked{% endif %}
             type="radio" name="toggle" value="-1" onclick="location.href='{{ url('todoitem_index') }}';">

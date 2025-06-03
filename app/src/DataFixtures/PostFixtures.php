@@ -1,20 +1,20 @@
 <?php
 /**
- * Note fixtures.
+ * Post fixtures.
  */
 
 namespace App\DataFixtures;
 
 use App\Entity\Category;
-use App\Entity\Note;
+use App\Entity\Post;
 use App\Entity\User;
 use App\Repository\CategoryRepository;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
- * Class NoteFixtures.
+ * Class PostFixtures.
  */
-class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
+class PostFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     /**
      * Category repository.
@@ -44,16 +44,16 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             return;
         }
 
-        $this->createMany(100, 'notes', function () {
-            $note = new Note();
-            $note->setTitle($this->faker->sentence);
-            $note->setContent($this->faker->sentences(4, true));
-            $note->setCreatedAt(
+        $this->createMany(100, 'posts', function () {
+            $post = new Post();
+            $post->setTitle($this->faker->sentence);
+            $post->setContent($this->faker->sentences(4, true));
+            $post->setCreatedAt(
                 \DateTimeImmutable::createFromMutable(
                     $this->faker->dateTimeBetween('-100 days', '-1 days')
                 )
             );
-            $note->setUpdatedAt(
+            $post->setUpdatedAt(
                 \DateTimeImmutable::createFromMutable(
                     $this->faker->dateTimeBetween('-100 days', '-1 days')
                 )
@@ -61,7 +61,7 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
 
             /** @var User $author */
             $author = $this->getRandomReference('users');
-            $note->setAuthor($author);
+            $post->setAuthor($author);
 
             $categories = $this->categoryRepository->findBy(['author' => $author]);
             if (0 === count($categories)) {
@@ -69,9 +69,9 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             }
             /** @var Category $category */
             $category = $this->faker->randomElement($categories);
-            $note->setCategory($category);
+            $post->setCategory($category);
 
-            return $note;
+            return $post;
         });
 
         $this->manager->flush();
