@@ -106,6 +106,14 @@
                 <source>message.record_not_found</source>
                 <target>Nie znaleziono rekordu</target>
             </trans-unit>
+            <trans-unit id="message.you_cant_edit_not_your_post">
+                <source>message.you_cant_edit_not_your_post</source>
+                <target>Tylko autor posta może go edytować</target>
+            </trans-unit>
+            <trans-unit id="message.you_cant_delete_not_your_post">
+                <source>message.you_cant_delete_not_your_post</source>
+                <target>Tylko autor posta może go usunąć</target>
+            </trans-unit>
             <trans-unit id="title.post_details">
                 <source>title.post_details</source>
                 <target>Post #%id%</target>

@@ -179,7 +179,7 @@ class NoteController extends AbstractController
         if ($note->getAuthor() !== $this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
             $this->addFlash(
                 'warning',
-                $this->translator->trans('message.record_not_found')
+                $this->translator->trans('message.you_cant_edit_not_your_post')
             );
 
             return $this->redirectToRoute('note_index');
@@ -230,7 +230,7 @@ class NoteController extends AbstractController
         if ($note->getAuthor() !== $this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
             $this->addFlash(
                 'warning',
-                $this->translator->trans('message.record_not_found')
+                $this->translator->trans('message.you_cant_delete_not_your_post')
             );
 
             return $this->redirectToRoute('note_index');

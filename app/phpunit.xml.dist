@@ -9,7 +9,7 @@
         <exclude>
             <file>src/Kernel.php</file>
             <directory>src/DataFixtures</directory>
-        </exclude>z
+        </exclude>
     </coverage>
     <php>
         <ini name="error_reporting" value="-1"/>
