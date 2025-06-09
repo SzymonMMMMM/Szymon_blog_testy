@@ -20,8 +20,8 @@
     display: flex;
     flex-shrink: 2;
     align-items: center;
-    height: 100px;
-    padding: 4px 6px;
+    height: 103px;
+    padding: 4px 9px 4px 7px;
     border-radius: 100px;
     position: relative;
     border: 2px solid #777;
