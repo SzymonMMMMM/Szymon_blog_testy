@@ -114,8 +114,8 @@ class PostController extends AbstractController
             }
         }
 
-        // TODO - zamiast wszystkich to specyficzne do tego posta
-        $comment = $commentRepository->findAll();
+        // TODO - w serwisie
+        $comment = $commentRepository->findBy(['post' => $post->getId()]);
 
         return $this->render(
             'posts/show.html.twig',

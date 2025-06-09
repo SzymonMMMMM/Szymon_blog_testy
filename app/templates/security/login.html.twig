@@ -31,5 +31,9 @@
     <button class="btn btn-lg btn-primary" type="submit">
         {{ 'title.signin'|trans }}
     </button>
+
+    <div class="index-link">
+        <a href="{{ path('post_index') }}" style="float: right">{{ 'title.back_to_index'|trans }}</a>
+    </div>
 </form>
 {% endblock %}

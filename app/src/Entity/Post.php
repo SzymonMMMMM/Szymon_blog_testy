@@ -70,7 +70,7 @@ class Post
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     #[Assert\Type('string')]
     #[Assert\Length(max: 65535)]
-    private ?string $content = null;
+    private ?string $content;
 
     /**
      * Category.
@@ -80,7 +80,7 @@ class Post
     #[ORM\ManyToOne(targetEntity: Category::class, fetch: 'LAZY')]
     #[Assert\Type(Category::class)]
     #[Assert\NotBlank]
-    #[ORM\JoinColumn(name: 'category_id', referencedColumnName: 'id', nullable: false)]
+    #[ORM\JoinColumn(name: 'category_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
     private ?Category $category = null;
 
     /**
@@ -104,8 +104,6 @@ class Post
     #[Assert\Type(User::class)]
     private ?User $author;
 
-    #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comment::class, orphanRemoval: true)]
-    private Collection $comments;
 
 //    #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comments::class)]
 //    private Collection $comments;
@@ -314,33 +312,4 @@ class Post
 //        return $this;
 //    }
 
-/**
- * @return Collection<int, Comment>
- */
-public function getComments(): Collection
-{
-    return $this->comments;
-}
-
-public function addComment(Comment $comment): self
-{
-    if (!$this->comments->contains($comment)) {
-        $this->comments->add($comment);
-        $comment->setPost($this);
-    }
-
-    return $this;
-}
-
-public function removeComment(Comment $comment): self
-{
-    if ($this->comments->removeElement($comment)) {
-        // set the owning side to null (unless already changed)
-        if ($comment->getPost() === $this) {
-            $comment->setPost(null);
-        }
-    }
-
-    return $this;
-}
 }

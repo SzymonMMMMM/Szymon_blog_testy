@@ -72,7 +72,9 @@
             {{ 'message.empty_list'|trans }}
         </p>
     {% endif %}
-    {% include 'default/_add_button.html.twig' with {
-        name_create: url('post_create')
-    } %}
+    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}
+        {% include 'default/_add_button.html.twig' with {
+            name_create: url('post_create')
+        } %}
+    {% endif %}
 {% endblock %}
