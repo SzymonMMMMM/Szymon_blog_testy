@@ -1,5 +1,5 @@
 security:
-    enable_authenticator_manager: true
+#    enable_authenticator_manager: true
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
@@ -43,10 +43,11 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
         #- { path: ^/user, roles: ROLE_ADMIN}
         - { path: ^/tag, roles: ROLE_ADMIN}
+        - { path: ^/category, roles: ROLE_USER }
         - { path: ^/login, roles: PUBLIC_ACCESS}
         - { path: ^/register, roles: PUBLIC_ACCESS }
         - { path: ^/, roles: PUBLIC_ACCESS}
-        - { path: ^/note, roles: PUBLIC_ACCESS }
+        - { path: ^/post, roles: PUBLIC_ACCESS }
 
 
 when@test:

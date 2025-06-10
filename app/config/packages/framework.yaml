@@ -1,7 +1,8 @@
 # see https://symfony.com/doc/current/reference/configuration/framework.html
 framework:
+    handle_all_throwables: true # or false, depending on your intent
     messenger:
-        reset_on_message: true
+#        reset_on_message: true
 
     secret: '%env(APP_SECRET)%'
     #csrf_protection: true
