@@ -143,9 +143,30 @@ class PostControllerTest extends WebTestCase
     }
 
     /**
-     * Test show single post and delete comment post.
+     * Test show single post and delete comment post for Authorized User.
      */
-    public function testShowSingleDeleteCommentPost(): void
+    public function testShowSingleDeleteCommentPostUser(): void
+    {
+        // given
+        $adminUser = $this->createUser([UserRole::ROLE_USER->value]);
+        $this->httpClient->loginUser($adminUser);
+        $category = $this->createCategory($adminUser);
+        $post = $this->createPost($adminUser, $category);
+        $comment = $this->createComment($adminUser, $post);
+
+        // when
+        $this->httpClient->request('GET', self::COMMENT_TEST_ROUTE . '/' . $comment->getId() . '/delete');
+
+        // then
+        $this->assertResponseRedirects();
+        $this->httpClient->followRedirect();
+        $this->assertSelectorExists('div.alert-warning[role="alert"]');
+    }
+
+    /**
+     * Test show single post and delete comment post for Admin.
+     */
+    public function testShowSingleDeleteCommentPostAdmin(): void
     {
         // given
         $adminUser = $this->createUser([UserRole::ROLE_USER->value, UserRole::ROLE_ADMIN->value]);
