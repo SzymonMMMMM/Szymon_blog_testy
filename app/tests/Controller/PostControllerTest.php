@@ -44,6 +44,13 @@ class PostControllerTest extends WebTestCase
     public const TEST_ROUTE = '/post';
 
     /**
+     * Test route.
+     *
+     * @const string
+     */
+    public const COMMENT_TEST_ROUTE = '/comment';
+
+    /**
      * Test client.
      */
     private KernelBrowser $httpClient;
@@ -128,6 +135,30 @@ class PostControllerTest extends WebTestCase
         $this->httpClient->submitForm($postButtonText, [
             'comment[content]' => 'Test Post Content',
         ]);
+        // then
+        $this->assertResponseRedirects();
+        $this->httpClient->followRedirect();
+        $this->assertSelectorExists('div.alert-success[role="alert"]');
+    }
+
+    /**
+     * Test show single post and delete comment post.
+     */
+    public function testShowSingleDeleteCommentPost(): void
+    {
+        // given
+        $adminUser = $this->createUser([UserRole::ROLE_USER->value, UserRole::ROLE_ADMIN->value]);
+        $this->httpClient->loginUser($adminUser);
+        $category = $this->createCategory($adminUser);
+        $post = $this->createPost($adminUser, $category);
+        $comment = $this->createComment($adminUser, $post);
+
+        $this->httpClient->request('GET', self::COMMENT_TEST_ROUTE . '/' . $comment->getId() . '/delete');
+        $deleteButtonText = $this->translator->trans('action.delete');
+
+        // when
+        $this->httpClient->submitForm($deleteButtonText);
+
         // then
         $this->assertResponseRedirects();
         $this->httpClient->followRedirect();
@@ -541,18 +572,18 @@ class PostControllerTest extends WebTestCase
      * Create comment.
      *
      * @param User   $author Comment author
-     * @param Post $post_id Post id
+     * @param Post $post Post id
      * @param string $content  Comment content
      *
      * @return Comment Comment entity
      *
      * @throws ContainerExceptionInterface|NotFoundExceptionInterface|ORMException|OptimisticLockException
      */
-    private function createComment(User $author, Post $post_id, string $content = 'Test Comment Content'): Comment
+    private function createComment(User $author, Post $post, string $content = 'Test Comment Content'): Comment
     {
         $comment = new Comment();
         $comment->setUser($author);
-        $comment->setPost($post_id);
+        $comment->setPost($post);
         $comment->setContent($content);
 
         $commentRepository = static::getContainer()->get(CommentRepository::class);

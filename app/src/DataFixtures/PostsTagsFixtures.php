@@ -1,6 +1,6 @@
 <?php
 /**
- * Note_tags fixtures.
+ * Post_tags fixtures.
  */
 
 namespace App\DataFixtures;
