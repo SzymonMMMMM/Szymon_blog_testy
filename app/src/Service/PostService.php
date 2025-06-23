@@ -39,10 +39,6 @@ class PostService implements PostServiceInterface
      */
     private PostRepository $postRepository;
 
-    /**
-     * Comment repository.
-     */
-    private CommentRepository $commentRepository;
 
     /**
      * Constructor.
@@ -51,7 +47,6 @@ class PostService implements PostServiceInterface
      * @param PaginatorInterface       $paginator          Paginator
      * @param TagServiceInterface      $tagService         Tag service
      * @param PostRepository           $postRepository     Post repository
-     * @param CommentRepository       $commentRepository Comment repository
      */
     public function __construct(CategoryServiceInterface $categoryService, PaginatorInterface $paginator, TagServiceInterface $tagService, PostRepository $postRepository, CommentRepository $commentRepository)
     {
@@ -59,7 +54,6 @@ class PostService implements PostServiceInterface
         $this->paginator = $paginator;
         $this->tagService = $tagService;
         $this->postRepository = $postRepository;
-        $this->commentRepository = $commentRepository;
     }
 
     /**
@@ -91,16 +85,6 @@ class PostService implements PostServiceInterface
     public function save(Post $post): void
     {
         $this->postRepository->save($post);
-    }
-
-    /**
-     * SaveComment entity..
-     *
-     * @param Comment $comment Comment entity
-     */
-    public function saveComment(Comment $comment): void
-    {
-        $this->commentRepository->save($comment);
     }
 
     /**

@@ -11,6 +11,7 @@ use App\Entity\User;
 use App\Form\Type\PostType;
 use App\Form\Type\CommentType;
 use App\Repository\CommentRepository;
+use App\Service\CommentServiceInterface;
 use App\Service\PostServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -31,19 +32,27 @@ class PostController extends AbstractController
     private PostServiceInterface $postService;
 
     /**
+     * Comment Service.
+     */
+    private CommentServiceInterface $commentService;
+
+    /**
      * Translator.
      */
     private TranslatorInterface $translator;
+
 
     /**
      * Constructor.
      *
      * @param PostServiceInterface $postService Post Service
+     * @param CommentServiceInterface $commentService Comment Service
      * @param TranslatorInterface  $translator  Translator
      */
-    public function __construct(PostServiceInterface $postService, TranslatorInterface $translator)
+    public function __construct(PostServiceInterface $postService, CommentServiceInterface $commentService, TranslatorInterface $translator)
     {
         $this->postService = $postService;
+        $this->commentService = $commentService;
         $this->translator = $translator;
     }
 
@@ -89,6 +98,7 @@ class PostController extends AbstractController
             CommentType::class,
             $comment,
             [
+                'method' => 'POST',
                 'action' => $this->generateUrl('post_show', ['id' => $post->getId()]),
             ]
         );
@@ -105,7 +115,7 @@ class PostController extends AbstractController
                 return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
             }
             else {
-            $this->postService->saveComment($comment);
+            $this->commentService->Save($comment);
 
             $this->addFlash(
                 'success',

@@ -135,6 +135,7 @@ class PostControllerTest extends WebTestCase
         $this->httpClient->submitForm($postButtonText, [
             'comment[content]' => 'Test Post Content',
         ]);
+
         // then
         $this->assertResponseRedirects();
         $this->httpClient->followRedirect();

@@ -5,9 +5,7 @@
 
 namespace App\Service;
 
-use App\Entity\Comment;
 use App\Entity\Post;
-use App\Entity\User;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**
@@ -23,7 +21,7 @@ interface PostServiceInterface
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    // CHANGED - usunalem User $author
+    // TODO - usunalem User $author
     public function getPaginatedList(int $page, array $filters = []): PaginationInterface;
 
     /**
@@ -33,12 +31,6 @@ interface PostServiceInterface
      */
     public function save(Post $post): void;
 
-    /**
-     * Save comment.
-     *
-     * @param Comment $comment Comment entity
-     */
-    public function saveComment(Comment $comment): void;
 
     /**
      * Delete entity.
