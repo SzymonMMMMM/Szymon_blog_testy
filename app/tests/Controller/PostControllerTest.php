@@ -9,11 +9,13 @@ use App\Entity\Category;
 use App\Entity\Comment;
 use App\Entity\Post;
 use App\Entity\Enum\UserRole;
+use App\Entity\Tag;
 use App\Entity\User;
 use App\Form\Type\PostType;
 use App\Repository\CategoryRepository;
 use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
+use App\Repository\TagRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -196,6 +198,34 @@ class PostControllerTest extends WebTestCase
     }
 
     /**
+     * Test create post submit with valid data and tags.
+     *
+     * @throws ContainerExceptionInterface|NotFoundExceptionInterface|ORMException|OptimisticLockException
+     */
+    public function testCreatePostSubmitValidDataAndTags(): void
+    {
+        // given
+        $user = $this->createUser([UserRole::ROLE_USER->value]);
+        $this->httpClient->loginUser($user);
+        $category = $this->createCategory($user);
+
+        $this->httpClient->request('GET', self::TEST_ROUTE . '/create');
+        $createButtonText = $this->translator->trans('action.save');
+
+        // when
+        $this->httpClient->submitForm($createButtonText, [
+            'post[title]' => 'Test Post Title',
+            'post[content]' => 'Test Post Content',
+            'post[category]' => $category->getId(),
+            'post[tags]' => 'tag1,tag2,tag3',
+        ]);
+        // then
+        $this->assertResponseRedirects();
+        $this->httpClient->followRedirect();
+        $this->assertSelectorExists('div.alert-success[role="alert"]');
+    }
+
+    /**
      * Test edit post form for anonymous user.
      */
     public function testEditPostAnonymousUser(): void
@@ -276,6 +306,41 @@ class PostControllerTest extends WebTestCase
             'post[title]' => 'Test Post Title',
             'post[content]' => 'Test Post Content',
             'post[category]' => $category->getId(),
+        ]);
+        // then
+        $this->assertResponseRedirects();
+        $this->httpClient->followRedirect();
+        $this->assertSelectorExists('div.alert-success[role="alert"]');
+    }
+
+    /**
+     * Test edit post submit with valid data and tags.
+     *
+     * @throws ContainerExceptionInterface|NotFoundExceptionInterface|ORMException|OptimisticLockException
+     */
+    public function testEditPostSubmitValidDataAndTags(): void
+    {
+        // given
+        $user = $this->createUser([UserRole::ROLE_USER->value]);
+        $this->httpClient->loginUser($user);
+        $category = $this->createCategory($user);
+//        $tag1 = new Tag();
+//        $tag1->setTitle('tag99');
+//        $tag2 = new Tag();
+//        $tag2->setTitle('tag88');
+
+//        $post = $this->createPostWithTags($user, $category, [$tag1, $tag2]);
+        $post = $this->createPostWithTags($user, $category);
+
+        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $post->getId() . '/edit');
+        $editButtonText = $this->translator->trans('action.edit');
+
+        // when
+        $this->httpClient->submitForm($editButtonText, [
+            'post[title]' => 'Test Post Title',
+            'post[content]' => 'Test Post Content',
+            'post[category]' => $category->getId(),
+            'post[tags]' => 'tag1,tag2,tag3',
         ]);
         // then
         $this->assertResponseRedirects();
@@ -368,7 +433,6 @@ class PostControllerTest extends WebTestCase
         $this->assertSelectorExists('div.alert-success[role="alert"]');
     }
 
-
     /**
      * Create user.
      *
@@ -439,6 +503,37 @@ class PostControllerTest extends WebTestCase
         $postRepository = static::getContainer()->get(PostRepository::class);
         $postRepository->save($post);
 
+        return $post;
+    }
+
+    /**
+     * Create post with tags.
+     *
+     * @param User   $author Post author
+     * @param Category $category Post category
+     * @param string $title  Post title
+     *
+     * @return Post Post entity
+     *
+     * @throws ContainerExceptionInterface|NotFoundExceptionInterface|ORMException|OptimisticLockException
+     */
+    private function createPostWithTags(User $author, Category $category, string $title = 'Test Post', string $content = 'Test Post Content'): Post
+    {
+        $post = new Post();
+        $post->setAuthor($author);
+        $post->setCategory($category);
+        $post->setTitle($title);
+        $post->setContent($content);
+
+        $tag1 = new Tag();
+        $tag1->setTitle('tag99');
+        $post->addTag($tag1);
+        $tagRepository = static::getContainer()->get(TagRepository::class);
+        $tagRepository->save($tag1);
+
+
+        $postRepository = static::getContainer()->get(PostRepository::class);
+        $postRepository->save($post);
         return $post;
     }
 
