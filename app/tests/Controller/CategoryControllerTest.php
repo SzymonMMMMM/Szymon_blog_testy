@@ -320,7 +320,7 @@ class CategoryControllerTest extends WebTestCase
         $this->assertSelectorExists('div.alert-success[role="alert"]');
     }
 
-        /**
+    /**
      * Test delete category form for anonymous user.
      */
     public function testDeleteCategoryAnonymousUser(): void

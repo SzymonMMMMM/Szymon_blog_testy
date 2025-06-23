@@ -16,12 +16,18 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class TagControllerTest.
  */
 class TagControllerTest extends WebTestCase
 {
+    /**
+     * Translator.
+     */
+    private TranslatorInterface $translator;
+
     /**
      * Test route.
      *
@@ -40,6 +46,7 @@ class TagControllerTest extends WebTestCase
     public function setUp(): void
     {
         $this->httpClient = static::createClient();
+        $this->translator = static::getContainer()->get(TranslatorInterface::class);
     }
 
     /**
@@ -49,26 +56,6 @@ class TagControllerTest extends WebTestCase
     {
         // given
         $expectedStatusCode = 302;
-
-        // when
-        $this->httpClient->request('GET', self::TEST_ROUTE);
-        $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
-
-        // then
-        $this->assertEquals($expectedStatusCode, $resultStatusCode);
-    }
-
-    /**
-     * Test index route for admin user.
-     *
-     * @throws ContainerExceptionInterface|NotFoundExceptionInterface|ORMException|OptimisticLockException
-     */
-    public function testIndexRouteAdminUser(): void
-    {
-        // given
-        $expectedStatusCode = 200;
-        $adminUser = $this->createUser([UserRole::ROLE_USER->value, UserRole::ROLE_ADMIN->value]);
-        $this->httpClient->loginUser($adminUser);
 
         // when
         $this->httpClient->request('GET', self::TEST_ROUTE);
@@ -89,6 +76,26 @@ class TagControllerTest extends WebTestCase
         $expectedStatusCode = 403;
         $user = $this->createUser([UserRole::ROLE_USER->value]);
         $this->httpClient->loginUser($user);
+
+        // when
+        $this->httpClient->request('GET', self::TEST_ROUTE);
+        $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
+
+        // then
+        $this->assertEquals($expectedStatusCode, $resultStatusCode);
+    }
+
+    /**
+     * Test index route for admin user.
+     *
+     * @throws ContainerExceptionInterface|NotFoundExceptionInterface|ORMException|OptimisticLockException
+     */
+    public function testIndexRouteAdminUser(): void
+    {
+        // given
+        $expectedStatusCode = 200;
+        $adminUser = $this->createUser([UserRole::ROLE_USER->value, UserRole::ROLE_ADMIN->value]);
+        $this->httpClient->loginUser($adminUser);
 
         // when
         $this->httpClient->request('GET', self::TEST_ROUTE);
@@ -125,6 +132,26 @@ class TagControllerTest extends WebTestCase
         $expectedStatusCode = 403;
         $user = $this->createUser([UserRole::ROLE_USER->value]);
         $this->httpClient->loginUser($user);
+
+        // when
+        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . 1);
+        $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
+
+        // then
+        $this->assertEquals($expectedStatusCode, $resultStatusCode);
+    }
+
+    /**
+     * Test show single tag for admin user (tag owner).
+     *
+     * @throws ContainerExceptionInterface|NotFoundExceptionInterface|ORMException|OptimisticLockException
+     */
+    public function testShowSingleTagAdminUser(): void
+    {
+        // given
+        $expectedStatusCode = 200;
+        $adminUser = $this->createUser([UserRole::ROLE_USER->value, UserRole::ROLE_ADMIN->value]);
+        $this->httpClient->loginUser($adminUser);
 
         // when
         $this->httpClient->request('GET', self::TEST_ROUTE . '/' . 1);
@@ -192,6 +219,29 @@ class TagControllerTest extends WebTestCase
     }
 
     /**
+     * Test create tag submit with valid data.
+     *
+     * @throws ContainerExceptionInterface|NotFoundExceptionInterface|ORMException|OptimisticLockException
+     */
+    public function testCreateTagSubmitValidData(): void
+    {
+        // given
+        $adminUser = $this->createUser([UserRole::ROLE_USER->value, UserRole::ROLE_ADMIN->value]);
+        $this->httpClient->loginUser($adminUser);
+
+        $this->httpClient->request('GET', self::TEST_ROUTE . '/create');
+        $createButtonText = $this->translator->trans('action.save');
+        // when
+        $this->httpClient->submitForm($createButtonText, [
+            'tag[title]' => 'Test Tag Title',
+        ]);
+        // then
+        $this->assertResponseRedirects();
+        $this->httpClient->followRedirect();
+        $this->assertSelectorExists('div.alert-success[role="alert"]');
+    }
+
+    /**
      * Test edit tag form for anonymous user.
      */
     public function testEditTagAnonymousUser(): void
@@ -251,6 +301,31 @@ class TagControllerTest extends WebTestCase
     }
 
     /**
+     * Test edit tag submit with valid data.
+     *
+     * @throws ContainerExceptionInterface|NotFoundExceptionInterface|ORMException|OptimisticLockException
+     */
+    public function testEditTagSubmitValidData(): void
+    {
+        // given
+        $adminUser = $this->createUser([UserRole::ROLE_USER->value, UserRole::ROLE_ADMIN->value]);
+        $this->httpClient->loginUser($adminUser);
+        $category = $this->createTag($adminUser);
+
+        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $category->getId() . '/edit');
+        $editButtonText = $this->translator->trans('action.edit');
+
+        // when
+        $this->httpClient->submitForm($editButtonText, [
+            'tag[title]' => 'Updated Tag Title',
+        ]);
+        // then
+        $this->assertResponseRedirects();
+        $this->httpClient->followRedirect();
+        $this->assertSelectorExists('div.alert-success[role="alert"]');
+    }
+
+    /**
      * Test delete tag form for anonymous user.
      */
     public function testDeleteTagAnonymousUser(): void
@@ -307,6 +382,32 @@ class TagControllerTest extends WebTestCase
         // then
         $this->assertEquals($expectedStatusCode, $resultStatusCode);
     }
+
+    /**
+     * Test delete tag submit with valid data.
+     *
+     * @throws ContainerExceptionInterface|NotFoundExceptionInterface|ORMException|OptimisticLockException
+     */
+    public function testDeleteTagSubmitValidData(): void
+    {
+        // given
+        $adminUser = $this->createUser([UserRole::ROLE_USER->value, UserRole::ROLE_ADMIN->value]);
+        $this->httpClient->loginUser($adminUser);
+        $category = $this->createTag($adminUser);
+
+        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $category->getId() . '/delete');
+        $deleteButtonText = $this->translator->trans('action.delete');
+
+        // when
+        $this->httpClient->submitForm($deleteButtonText, [
+            'tag[title]' => 'Updated Tag Title',
+        ]);
+        // then
+        $this->assertResponseRedirects();
+        $this->httpClient->followRedirect();
+        $this->assertSelectorExists('div.alert-success[role="alert"]');
+    }
+
 
     /**
      * Create user.
