@@ -46,8 +46,9 @@ security:
         - { path: ^/category, roles: ROLE_USER }
         - { path: ^/login, roles: PUBLIC_ACCESS}
         - { path: ^/register, roles: PUBLIC_ACCESS }
-        - { path: ^/, roles: PUBLIC_ACCESS}
+        - { path: ^/post/create, roles: ROLE_USER }
         - { path: ^/post, roles: PUBLIC_ACCESS }
+        - { path: ^/, roles: PUBLIC_ACCESS}
 
 
 when@test:

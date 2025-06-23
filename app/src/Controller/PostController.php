@@ -101,6 +101,8 @@ class PostController extends AbstractController
                     'warning',
                     $this->translator->trans('message.can_not_create_a_comment')
                 );
+
+                return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
             }
             else {
             $this->postService->saveComment($comment);
