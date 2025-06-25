@@ -148,11 +148,11 @@ class PostControllerTest extends WebTestCase
     public function testShowSingleDeleteCommentPostUser(): void
     {
         // given
-        $adminUser = $this->createUser([UserRole::ROLE_USER->value]);
-        $this->httpClient->loginUser($adminUser);
-        $category = $this->createCategory($adminUser);
-        $post = $this->createPost($adminUser, $category);
-        $comment = $this->createComment($adminUser, $post);
+        $user = $this->createUser([UserRole::ROLE_USER->value]);
+        $this->httpClient->loginUser($user);
+        $category = $this->createCategory($user);
+        $post = $this->createPost($user, $category);
+        $comment = $this->createComment($user, $post);
 
         // when
         $this->httpClient->request('GET', self::COMMENT_TEST_ROUTE . '/' . $comment->getId() . '/delete');
@@ -377,12 +377,6 @@ class PostControllerTest extends WebTestCase
         $user = $this->createUser([UserRole::ROLE_USER->value]);
         $this->httpClient->loginUser($user);
         $category = $this->createCategory($user);
-//        $tag1 = new Tag();
-//        $tag1->setTitle('tag99');
-//        $tag2 = new Tag();
-//        $tag2->setTitle('tag88');
-
-//        $post = $this->createPostWithTags($user, $category, [$tag1, $tag2]);
         $post = $this->createPostWithTags($user, $category);
 
         $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $post->getId() . '/edit');

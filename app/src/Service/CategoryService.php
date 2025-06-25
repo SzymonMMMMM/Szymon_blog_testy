@@ -94,13 +94,9 @@ class CategoryService implements CategoryServiceInterface
      */
     public function canBeDeleted(Category $category): bool
     {
-        try {
-            $result = $this->postRepository->countByCategory($category);
+        $result = $this->postRepository->countByCategory($category);
 
-            return !($result > 0);
-        } catch (NoResultException|NonUniqueResultException) {
-            return false;
-        }
+        return !($result > 0);
     }
 
     /**
