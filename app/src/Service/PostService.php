@@ -5,6 +5,7 @@
 
 namespace App\Service;
 
+use App\Entity\Category;
 use App\Entity\Comment;
 use App\Entity\Post;
 use App\Repository\PostRepository;
@@ -39,6 +40,11 @@ class PostService implements PostServiceInterface
      */
     private PostRepository $postRepository;
 
+    /**
+     * Comment repository.
+     */
+    private $commentRepository;
+
 
     /**
      * Constructor.
@@ -47,6 +53,7 @@ class PostService implements PostServiceInterface
      * @param PaginatorInterface       $paginator          Paginator
      * @param TagServiceInterface      $tagService         Tag service
      * @param PostRepository           $postRepository     Post repository
+     * @param CommentRepository        $commentRepository  Comment repository
      */
     public function __construct(CategoryServiceInterface $categoryService, PaginatorInterface $paginator, TagServiceInterface $tagService, PostRepository $postRepository, CommentRepository $commentRepository)
     {
@@ -54,6 +61,7 @@ class PostService implements PostServiceInterface
         $this->paginator = $paginator;
         $this->tagService = $tagService;
         $this->postRepository = $postRepository;
+        $this->commentRepository = $commentRepository;
     }
 
     /**
@@ -124,5 +132,18 @@ class PostService implements PostServiceInterface
         }
 
         return $resultFilters;
+    }
+
+    /**
+     * Find one by id.
+     *
+     * @param int $id Comment id
+     *
+     * @return Comment|null Comment entity
+     *
+     */
+    public function findOneBy(int $id): ?Comment
+    {
+        return $this->commentRepository->findOneBy(['post' => $id]);
     }
 }

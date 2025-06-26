@@ -126,8 +126,7 @@ class PostController extends AbstractController
             }
         }
 
-        // TODO - w serwisie
-        $comment = $commentRepository->findBy(['post' => $post->getId()]);
+        $comment = $this->postService->findOneBy($post->getId());
 
         return $this->render(
             'posts/show.html.twig',

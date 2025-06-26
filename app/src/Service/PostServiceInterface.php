@@ -5,7 +5,9 @@
 
 namespace App\Service;
 
+use App\Entity\Comment;
 use App\Entity\Post;
+use Doctrine\ORM\NonUniqueResultException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**
@@ -21,7 +23,6 @@ interface PostServiceInterface
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    // TODO - usunalem User $author
     public function getPaginatedList(int $page, array $filters = []): PaginationInterface;
 
     /**
@@ -47,4 +48,15 @@ interface PostServiceInterface
      * @return array<string, object> Result array of filters
      */
     public function prepareFilters(array $filters): array;
+
+    /**
+     * Find one by id.
+     *
+     * @param int $id Comment id
+     *
+     * @return Comment|null Comment entity
+     *
+     * @throws NonUniqueResultException
+     */
+    public function findOneBy(int $id): ?Comment;
 }
