@@ -34,7 +34,7 @@ class CommentController extends AbstractController
      * Constructor.
      *
      * @param CommentServiceInterface $commentService Comment Service
-     * @param TranslatorInterface  $translator  Translator
+     * @param TranslatorInterface     $translator     Translator
      */
     public function __construct(CommentServiceInterface $commentService, TranslatorInterface $translator)
     {
@@ -47,7 +47,7 @@ class CommentController extends AbstractController
      * Delete action.
      *
      * @param Request $request HTTP request
-     * @param Comment    $comment    Comment entity
+     * @param Comment $comment Comment entity
      *
      * @return Response HTTP response
      */
@@ -92,5 +92,4 @@ class CommentController extends AbstractController
             ]
         );
     }
-
 }

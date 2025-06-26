@@ -49,11 +49,11 @@ class PostService implements PostServiceInterface
     /**
      * Constructor.
      *
-     * @param CategoryServiceInterface $categoryService    Category service
-     * @param PaginatorInterface       $paginator          Paginator
-     * @param TagServiceInterface      $tagService         Tag service
-     * @param PostRepository           $postRepository     Post repository
-     * @param CommentRepository        $commentRepository  Comment repository
+     * @param CategoryServiceInterface $categoryService   Category service
+     * @param PaginatorInterface       $paginator         Paginator
+     * @param TagServiceInterface      $tagService        Tag service
+     * @param PostRepository           $postRepository    Post repository
+     * @param CommentRepository        $commentRepository Comment repository
      */
     public function __construct(CategoryServiceInterface $categoryService, PaginatorInterface $paginator, TagServiceInterface $tagService, PostRepository $postRepository, CommentRepository $commentRepository)
     {

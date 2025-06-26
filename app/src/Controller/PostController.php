@@ -45,9 +45,9 @@ class PostController extends AbstractController
     /**
      * Constructor.
      *
-     * @param PostServiceInterface $postService Post Service
+     * @param PostServiceInterface    $postService    Post Service
      * @param CommentServiceInterface $commentService Comment Service
-     * @param TranslatorInterface  $translator  Translator
+     * @param TranslatorInterface     $translator     Translator
      */
     public function __construct(PostServiceInterface $postService, CommentServiceInterface $commentService, TranslatorInterface $translator)
     {
@@ -113,16 +113,15 @@ class PostController extends AbstractController
                 );
 
                 return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
-            }
-            else {
-            $this->commentService->Save($comment);
+            } else {
+                $this->commentService->Save($comment);
 
-            $this->addFlash(
-                'success',
-                $this->translator->trans('message.comment_created_successfully')
-            );
+                $this->addFlash(
+                    'success',
+                    $this->translator->trans('message.comment_created_successfully')
+                );
 
-            return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
+                return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
             }
         }
 
