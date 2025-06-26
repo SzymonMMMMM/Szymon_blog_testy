@@ -48,15 +48,4 @@ interface PostServiceInterface
      * @return array<string, object> Result array of filters
      */
     public function prepareFilters(array $filters): array;
-
-    /**
-     * Find one by id.
-     *
-     * @param int $id Comment id
-     *
-     * @return Comment|null Comment entity
-     *
-     * @throws NonUniqueResultException
-     */
-    public function findOneBy(int $id): ?Comment;
 }

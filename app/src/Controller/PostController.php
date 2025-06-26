@@ -124,7 +124,7 @@ class PostController extends AbstractController
             return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
         }
 
-        $comment = $this->postService->findOneBy($post->getId());
+        $comment = $this->commentService->findBy([$post->getId()]);
 
         return $this->render(
             'posts/show.html.twig',

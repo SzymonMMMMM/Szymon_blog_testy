@@ -42,11 +42,6 @@ class PostService implements PostServiceInterface
     private PostRepository $postRepository;
 
     /**
-     * Comment repository.
-     */
-    private $commentRepository;
-
-    /**
      * Constructor.
      *
      * @param CategoryServiceInterface $categoryService   Category service
@@ -61,7 +56,6 @@ class PostService implements PostServiceInterface
         $this->paginator = $paginator;
         $this->tagService = $tagService;
         $this->postRepository = $postRepository;
-        $this->commentRepository = $commentRepository;
     }
 
     /**
@@ -133,17 +127,5 @@ class PostService implements PostServiceInterface
         }
 
         return $resultFilters;
-    }
-
-    /**
-     * Find one by id.
-     *
-     * @param int $id Comment id
-     *
-     * @return Comment|null Comment entity
-     */
-    public function findOneBy(int $id): ?Comment
-    {
-        return $this->commentRepository->findOneBy(['post' => $id]);
     }
 }

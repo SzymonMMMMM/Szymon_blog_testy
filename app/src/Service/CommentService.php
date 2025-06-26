@@ -48,4 +48,16 @@ class CommentService implements CommentServiceInterface
     {
         $this->commentRepository->delete($comment);
     }
+
+    /**
+     * Find by id.
+     *
+     * @param array $id Comment id
+     *
+     * @return Comment[] Array of Comment entities
+ */
+    public function findBy(array $id): array
+    {
+        return $this->commentRepository->findBy(['post' => $id]);
+    }
 }
