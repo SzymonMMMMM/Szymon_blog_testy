@@ -1,12 +1,13 @@
 <?php
+
 /**
  * Tag controller tests.
  */
 
 namespace App\Tests\Controller;
 
-use App\Entity\Tag;
 use App\Entity\Enum\UserRole;
+use App\Entity\Tag;
 use App\Entity\User;
 use App\Repository\TagRepository;
 use App\Repository\UserRepository;
@@ -114,7 +115,7 @@ class TagControllerTest extends WebTestCase
         $expectedStatusCode = 302;
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/1');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/1');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -134,7 +135,7 @@ class TagControllerTest extends WebTestCase
         $this->httpClient->loginUser($user);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . 1);
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.(1));
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -154,13 +155,12 @@ class TagControllerTest extends WebTestCase
         $this->httpClient->loginUser($adminUser);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . 1);
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.(1));
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
         $this->assertEquals($expectedStatusCode, $resultStatusCode);
     }
-
 
     /**
      * Test create tag form for anonymous user.
@@ -171,7 +171,7 @@ class TagControllerTest extends WebTestCase
         $expectedStatusCode = 302;
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/create');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/create');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -191,7 +191,7 @@ class TagControllerTest extends WebTestCase
         $this->httpClient->loginUser($user);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/create');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/create');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -211,7 +211,7 @@ class TagControllerTest extends WebTestCase
         $this->httpClient->loginUser($adminUser);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/create');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/create');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -229,7 +229,7 @@ class TagControllerTest extends WebTestCase
         $adminUser = $this->createUser([UserRole::ROLE_USER->value, UserRole::ROLE_ADMIN->value]);
         $this->httpClient->loginUser($adminUser);
 
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/create');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/create');
         $createButtonText = $this->translator->trans('action.save');
         // when
         $this->httpClient->submitForm($createButtonText, [
@@ -250,13 +250,12 @@ class TagControllerTest extends WebTestCase
         $expectedStatusCode = 302;
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/1/edit');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/1/edit');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
         $this->assertEquals($expectedStatusCode, $resultStatusCode);
     }
-
 
     /**
      * Test edit tag form for authorized user.
@@ -272,7 +271,7 @@ class TagControllerTest extends WebTestCase
         $this->httpClient->loginUser($user1);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $tag->getId() . '/edit');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$tag->getId().'/edit');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -293,7 +292,7 @@ class TagControllerTest extends WebTestCase
         $tag = $this->createTag($adminUser);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $tag->getId() . '/edit');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$tag->getId().'/edit');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -312,7 +311,7 @@ class TagControllerTest extends WebTestCase
         $this->httpClient->loginUser($adminUser);
         $category = $this->createTag($adminUser);
 
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $category->getId() . '/edit');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$category->getId().'/edit');
         $editButtonText = $this->translator->trans('action.edit');
 
         // when
@@ -334,7 +333,7 @@ class TagControllerTest extends WebTestCase
         $expectedStatusCode = 302;
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/1/delete');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/1/delete');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -355,7 +354,7 @@ class TagControllerTest extends WebTestCase
         $this->httpClient->loginUser($user1);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $tag->getId() . '/delete');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$tag->getId().'/delete');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -376,7 +375,7 @@ class TagControllerTest extends WebTestCase
         $tag = $this->createTag($adminUser);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $tag->getId() . '/delete');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$tag->getId().'/delete');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -395,7 +394,7 @@ class TagControllerTest extends WebTestCase
         $this->httpClient->loginUser($adminUser);
         $category = $this->createTag($adminUser);
 
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $category->getId() . '/delete');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$category->getId().'/delete');
         $deleteButtonText = $this->translator->trans('action.delete');
 
         // when
@@ -408,11 +407,11 @@ class TagControllerTest extends WebTestCase
         $this->assertSelectorExists('div.alert-success[role="alert"]');
     }
 
-
     /**
      * Create user.
      *
-     * @param array $roles User roles
+     * @param array  $roles User roles
+     * @param string $email User email
      *
      * @return User User entity
      *

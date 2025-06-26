@@ -13,7 +13,6 @@ use App\Entity\User;
 use App\Repository\CategoryRepository;
 use App\Repository\PostRepository;
 use App\Repository\UserRepository;
-use App\Service\CategoryService;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Psr\Container\ContainerExceptionInterface;
@@ -21,8 +20,6 @@ use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Contracts\Translation\TranslatorInterface;
-
-
 
 /**
  * Class CategoryControllerTest.
@@ -54,7 +51,6 @@ class CategoryControllerTest extends WebTestCase
         $this->httpClient = static::createClient();
         $this->translator = static::getContainer()->get(TranslatorInterface::class);
     }
-
 
     /**
      * Test index route for anonymous user.
@@ -121,13 +117,11 @@ class CategoryControllerTest extends WebTestCase
         $expectedStatusCode = 302;
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/1');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/1');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
         $this->assertEquals($expectedStatusCode, $resultStatusCode);
-
-
     }
 
     /**
@@ -144,9 +138,8 @@ class CategoryControllerTest extends WebTestCase
         $this->httpClient->loginUser($user2);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $category->getId());
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$category->getId());
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
-
 
         // then
         $this->assertResponseRedirects();
@@ -168,13 +161,12 @@ class CategoryControllerTest extends WebTestCase
         $category = $this->createCategory($user);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $category->getId());
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$category->getId());
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
         $this->assertEquals($expectedStatusCode, $resultStatusCode);
     }
-
 
     /**
      * Test create category form for anonymous user.
@@ -185,7 +177,7 @@ class CategoryControllerTest extends WebTestCase
         $expectedStatusCode = 302;
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/create');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/create');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -205,7 +197,7 @@ class CategoryControllerTest extends WebTestCase
         $this->httpClient->loginUser($user);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/create');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/create');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -223,7 +215,7 @@ class CategoryControllerTest extends WebTestCase
         $user = $this->createUser([UserRole::ROLE_USER->value]);
         $this->httpClient->loginUser($user);
 
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/create');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/create');
         $createButtonText = $this->translator->trans('action.save');
         // when
         $this->httpClient->submitForm($createButtonText, [
@@ -250,7 +242,7 @@ class CategoryControllerTest extends WebTestCase
         $this->httpClient->loginUser($user2);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $category->getId() . '/edit');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$category->getId().'/edit');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -266,7 +258,7 @@ class CategoryControllerTest extends WebTestCase
         $expectedStatusCode = 302;
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/1/edit');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/1/edit');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -287,7 +279,7 @@ class CategoryControllerTest extends WebTestCase
         $category = $this->createCategory($user);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $category->getId() . '/edit');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$category->getId().'/edit');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -306,7 +298,7 @@ class CategoryControllerTest extends WebTestCase
         $this->httpClient->loginUser($user);
         $category = $this->createCategory($user);
 
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $category->getId() . '/edit');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$category->getId().'/edit');
         $editButtonText = $this->translator->trans('action.edit');
 
         // when
@@ -329,7 +321,7 @@ class CategoryControllerTest extends WebTestCase
         $expectedStatusCode = 302;
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/1/delete');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/1/delete');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -351,7 +343,7 @@ class CategoryControllerTest extends WebTestCase
         $this->httpClient->loginUser($user2);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $category->getId() . '/delete');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$category->getId().'/delete');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -372,7 +364,7 @@ class CategoryControllerTest extends WebTestCase
         $category = $this->createCategory($user);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $category->getId() . '/delete');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$category->getId().'/delete');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -391,7 +383,7 @@ class CategoryControllerTest extends WebTestCase
         $this->httpClient->loginUser($user);
         $category = $this->createCategory($user);
 
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $category->getId() . '/delete');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$category->getId().'/delete');
         $deleteButtonText = $this->translator->trans('action.delete');
 
         // when
@@ -418,20 +410,19 @@ class CategoryControllerTest extends WebTestCase
         $category = $this->createCategory($user);
         $this->createPost($user, $category);
 
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $category->getId() . '/delete');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$category->getId().'/delete');
 
         // then
         $this->assertResponseRedirects();
         $this->httpClient->followRedirect();
         $this->assertSelectorExists('div.alert-warning[role="alert"]');
-
     }
-
 
     /**
      * Create user.
      *
-     * @param array $roles User roles
+     * @param array  $roles User roles
+     * @param string $email User email
      *
      * @return User User entity
      *
@@ -479,8 +470,10 @@ class CategoryControllerTest extends WebTestCase
     /**
      * Create post.
      *
-     * @param User   $author Post author
-     * @param string $title  Post title
+     * @param User     $author   Post author
+     * @param Category $category Category category
+     * @param string   $title    Post title
+     * @param string   $content  Post content
      *
      * @return Post Post entity
      *

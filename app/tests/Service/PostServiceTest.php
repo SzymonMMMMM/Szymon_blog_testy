@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Post service tests.
  */
@@ -45,7 +46,6 @@ class PostServiceTest extends KernelTestCase
         $this->categoryService = $container->get('App\Service\CategoryServiceInterface');
         $this->tagService = $container->get('App\Service\TagServiceInterface');
         $this->testUser = $this->createUser([UserRole::ROLE_USER->value, UserRole::ROLE_ADMIN->value]);
-
     }
 
     /**
@@ -57,7 +57,8 @@ class PostServiceTest extends KernelTestCase
 
         // given
         $expectedCategory = new Category();
-        $expectedCategory->setTitle('Test Category');;
+        $expectedCategory->setTitle('Test Category');
+
         $expectedCategory->setAuthor($this->testUser);
         $this->entityManager->persist($expectedCategory);
         $this->entityManager->flush();
@@ -78,7 +79,8 @@ class PostServiceTest extends KernelTestCase
     {
         // given
         $expectedTag = new Tag();
-        $expectedTag->setTitle('Test Tag');;
+        $expectedTag->setTitle('Test Tag');
+
         $this->entityManager->persist($expectedTag);
         $this->entityManager->flush();
         $tag = $this->createTag($this->testUser);
@@ -92,14 +94,15 @@ class PostServiceTest extends KernelTestCase
         $this->assertEquals($tag, $result['tag']);
     }
 
-
-
     /**
      * Create user.
      *
-     * @param array $roles User roles
+     * @param array  $roles User roles
+     * @param string $email User email
      *
      * @return User User entity
+     *
+     * @throws ContainerExceptionInterface|NotFoundExceptionInterface|ORMException|OptimisticLockException
      */
     private function createUser(array $roles, string $email = 'testuser@example.com'): User
     {
@@ -159,5 +162,4 @@ class PostServiceTest extends KernelTestCase
 
         return $tag;
     }
-
 }

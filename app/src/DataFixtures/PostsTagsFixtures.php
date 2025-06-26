@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Post_tags fixtures.
  */

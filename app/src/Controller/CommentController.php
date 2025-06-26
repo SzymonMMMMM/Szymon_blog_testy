@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Comment controller.
  */
@@ -41,7 +42,6 @@ class CommentController extends AbstractController
         $this->commentService = $commentService;
         $this->translator = $translator;
     }
-
 
     /**
      * Delete action.

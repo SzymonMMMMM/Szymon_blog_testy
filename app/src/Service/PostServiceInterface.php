@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Post service interface.
  */
@@ -31,7 +32,6 @@ interface PostServiceInterface
      * @param Post $post Post entity
      */
     public function save(Post $post): void;
-
 
     /**
      * Delete entity.

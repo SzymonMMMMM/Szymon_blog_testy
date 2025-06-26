@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Category controller.
  */
@@ -7,8 +8,8 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\User;
-use App\Service\CategoryServiceInterface;
 use App\Form\Type\CategoryType;
+use App\Service\CategoryServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Post repository.
  */
@@ -34,6 +35,7 @@ class PostRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Post::class);
     }
+
     /**
      * Items per page.
      *
@@ -158,7 +160,7 @@ class PostRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('posts');
     }

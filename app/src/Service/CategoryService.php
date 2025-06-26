@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Category service.
  */
@@ -7,10 +8,9 @@ namespace App\Service;
 
 use App\Entity\Category;
 use App\Entity\User;
-use App\Repository\PostRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\PostRepository;
 use Doctrine\ORM\NonUniqueResultException;
-use Doctrine\ORM\NoResultException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 

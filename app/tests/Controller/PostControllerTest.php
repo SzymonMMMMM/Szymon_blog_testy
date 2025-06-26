@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Post controller tests.
  */
@@ -7,11 +8,10 @@ namespace App\Tests\Controller;
 
 use App\Entity\Category;
 use App\Entity\Comment;
-use App\Entity\Post;
 use App\Entity\Enum\UserRole;
+use App\Entity\Post;
 use App\Entity\Tag;
 use App\Entity\User;
-use App\Form\Type\PostType;
 use App\Repository\CategoryRepository;
 use App\Repository\CommentRepository;
 use App\Repository\PostRepository;
@@ -30,7 +30,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class PostControllerTest extends WebTestCase
 {
-
     /**
      * Translator.
      */
@@ -89,7 +88,7 @@ class PostControllerTest extends WebTestCase
         $expectedStatusCode = 200;
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/1');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/1');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -102,7 +101,7 @@ class PostControllerTest extends WebTestCase
     public function testShowSingleCreateCommentPostAnonymous(): void
     {
         // given
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/1');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/1');
 
         $this->assertSelectorExists('form');
 
@@ -127,8 +126,7 @@ class PostControllerTest extends WebTestCase
         $user1 = $this->createUser([UserRole::ROLE_USER->value], 'user_test1@example.com');
         $this->httpClient->loginUser($user1);
 
-
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/1');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/1');
         $postButtonText = $this->translator->trans('action.post');
 
         // when
@@ -155,7 +153,7 @@ class PostControllerTest extends WebTestCase
         $comment = $this->createComment($user, $post);
 
         // when
-        $this->httpClient->request('GET', self::COMMENT_TEST_ROUTE . '/' . $comment->getId() . '/delete');
+        $this->httpClient->request('GET', self::COMMENT_TEST_ROUTE.'/'.$comment->getId().'/delete');
 
         // then
         $this->assertResponseRedirects();
@@ -175,7 +173,7 @@ class PostControllerTest extends WebTestCase
         $post = $this->createPost($adminUser, $category);
         $comment = $this->createComment($adminUser, $post);
 
-        $this->httpClient->request('GET', self::COMMENT_TEST_ROUTE . '/' . $comment->getId() . '/delete');
+        $this->httpClient->request('GET', self::COMMENT_TEST_ROUTE.'/'.$comment->getId().'/delete');
         $deleteButtonText = $this->translator->trans('action.delete');
 
         // when
@@ -196,7 +194,7 @@ class PostControllerTest extends WebTestCase
         $expectedStatusCode = 302;
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/create');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/create');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -216,7 +214,7 @@ class PostControllerTest extends WebTestCase
         $this->httpClient->loginUser($user);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/create');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/create');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -235,7 +233,7 @@ class PostControllerTest extends WebTestCase
         $this->httpClient->loginUser($user);
         $category = $this->createCategory($user);
 
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/create');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/create');
         $createButtonText = $this->translator->trans('action.save');
 
         // when
@@ -262,7 +260,7 @@ class PostControllerTest extends WebTestCase
         $this->httpClient->loginUser($user);
         $category = $this->createCategory($user);
 
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/create');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/create');
         $createButtonText = $this->translator->trans('action.save');
 
         // when
@@ -287,12 +285,13 @@ class PostControllerTest extends WebTestCase
         $expectedStatusCode = 302;
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/1/edit');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/1/edit');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
         $this->assertEquals($expectedStatusCode, $resultStatusCode);
     }
+
     /**
      * Test edit category form for unauthorized user (not category owner).
      *
@@ -309,7 +308,7 @@ class PostControllerTest extends WebTestCase
         $this->httpClient->loginUser($user2);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $category->getId() . '/edit');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$category->getId().'/edit');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -331,7 +330,7 @@ class PostControllerTest extends WebTestCase
         $post = $this->createPost($user, $category);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $post->getId() . '/edit');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$post->getId().'/edit');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -351,7 +350,7 @@ class PostControllerTest extends WebTestCase
         $category = $this->createCategory($user);
         $post = $this->createPost($user, $category);
 
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $post->getId() . '/edit');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$post->getId().'/edit');
         $editButtonText = $this->translator->trans('action.edit');
 
         // when
@@ -379,7 +378,7 @@ class PostControllerTest extends WebTestCase
         $category = $this->createCategory($user);
         $post = $this->createPostWithTags($user, $category);
 
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $post->getId() . '/edit');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$post->getId().'/edit');
         $editButtonText = $this->translator->trans('action.edit');
 
         // when
@@ -404,7 +403,7 @@ class PostControllerTest extends WebTestCase
         $expectedStatusCode = 302;
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/1/delete');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/1/delete');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -427,7 +426,7 @@ class PostControllerTest extends WebTestCase
         $this->httpClient->loginUser($user2);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $post->getId() . '/delete');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$post->getId().'/delete');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -449,7 +448,7 @@ class PostControllerTest extends WebTestCase
         $post = $this->createPost($user, $category);
 
         // when
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $post->getId() . '/delete');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$post->getId().'/delete');
         $resultStatusCode = $this->httpClient->getResponse()->getStatusCode();
 
         // then
@@ -469,7 +468,7 @@ class PostControllerTest extends WebTestCase
         $category = $this->createCategory($user);
         $post = $this->createPost($user, $category);
 
-        $this->httpClient->request('GET', self::TEST_ROUTE . '/' . $post->getId() . '/delete');
+        $this->httpClient->request('GET', self::TEST_ROUTE.'/'.$post->getId().'/delete');
         $deleteButtonText = $this->translator->trans('action.delete');
 
         // when
@@ -483,7 +482,8 @@ class PostControllerTest extends WebTestCase
     /**
      * Create user.
      *
-     * @param array $roles User roles
+     * @param array  $roles User roles
+     * @param string $email User email
      *
      * @return User User entity
      *
@@ -531,9 +531,10 @@ class PostControllerTest extends WebTestCase
     /**
      * Create post.
      *
-     * @param User   $author Post author
-     * @param Category $category Post category
-     * @param string $title  Post title
+     * @param User     $author   Post author
+     * @param Category $category Category category
+     * @param string   $title    Post title
+     * @param string   $content  Post content
      *
      * @return Post Post entity
      *
@@ -556,9 +557,10 @@ class PostControllerTest extends WebTestCase
     /**
      * Create post with tags.
      *
-     * @param User   $author Post author
-     * @param Category $category Post category
-     * @param string $title  Post title
+     * @param User     $author   Post author
+     * @param Category $category Category category
+     * @param string   $title    Post title
+     * @param string   $content  Post content
      *
      * @return Post Post entity
      *
@@ -578,18 +580,18 @@ class PostControllerTest extends WebTestCase
         $tagRepository = static::getContainer()->get(TagRepository::class);
         $tagRepository->save($tag1);
 
-
         $postRepository = static::getContainer()->get(PostRepository::class);
         $postRepository->save($post);
+
         return $post;
     }
 
     /**
      * Create comment.
      *
-     * @param User   $author Comment author
-     * @param Post $post Post id
-     * @param string $content  Comment content
+     * @param User   $author  Comment author
+     * @param Post   $post    Post id
+     * @param string $content Comment content
      *
      * @return Comment Comment entity
      *

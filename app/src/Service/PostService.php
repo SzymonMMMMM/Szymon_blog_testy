@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Post service.
  */
@@ -8,8 +9,8 @@ namespace App\Service;
 use App\Entity\Category;
 use App\Entity\Comment;
 use App\Entity\Post;
-use App\Repository\PostRepository;
 use App\Repository\CommentRepository;
+use App\Repository\PostRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
 use Knp\Component\Pager\Pagination\PaginationInterface;
@@ -45,7 +46,6 @@ class PostService implements PostServiceInterface
      */
     private $commentRepository;
 
-
     /**
      * Constructor.
      *
@@ -77,6 +77,7 @@ class PostService implements PostServiceInterface
     public function getPaginatedList(int $page, array $filters = []): PaginationInterface
     {
         $filters = $this->prepareFilters($filters);
+
         // CHANGED - z queryByAuthor na queryAll
         return $this->paginator->paginate(
             $this->postRepository->queryAll($filters),
@@ -140,7 +141,6 @@ class PostService implements PostServiceInterface
      * @param int $id Comment id
      *
      * @return Comment|null Comment entity
-     *
      */
     public function findOneBy(int $id): ?Comment
     {

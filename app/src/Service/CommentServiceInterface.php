@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Comment service interface.
  */
@@ -12,15 +13,12 @@ use App\Entity\Comment;
  */
 interface CommentServiceInterface
 {
-
-
     /**
      * Save entity.
      *
      * @param Comment $comment Comment entity
      */
     public function save(Comment $comment): void;
-
 
     /**
      * Delete entity.

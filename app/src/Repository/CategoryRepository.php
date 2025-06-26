@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Category repository.
  */
@@ -6,10 +7,10 @@
 namespace App\Repository;
 
 use App\Entity\Category;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
-use App\Entity\User;
 
 /**
  * @method Category|null find($id, $lockMode = null, $lockVersion = null)
@@ -93,8 +94,6 @@ class CategoryRepository extends ServiceEntityRepository
         return $queryBuilder;
     }
 
-
-
     /**
      * Get or create new query builder.
      *
@@ -102,7 +101,7 @@ class CategoryRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    public function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    public function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('category');
     }

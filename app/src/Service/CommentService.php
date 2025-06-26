@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Comment service.
  */
@@ -13,15 +14,10 @@ use App\Repository\CommentRepository;
  */
 class CommentService implements CommentServiceInterface
 {
-
-
-
     /**
      * Comment repository.
      */
     private CommentRepository $commentRepository;
-
-
 
     /**
      * Constructor.
@@ -30,10 +26,8 @@ class CommentService implements CommentServiceInterface
      */
     public function __construct(CommentRepository $commentRepository)
     {
-
         $this->commentRepository = $commentRepository;
     }
-
 
     /**
      * Save entity.
@@ -44,7 +38,6 @@ class CommentService implements CommentServiceInterface
     {
         $this->commentRepository->save($comment);
     }
-
 
     /**
      * Delete entity.

@@ -1,7 +1,9 @@
 <?php
+
 /**
  * Comment entity tests.
  */
+
 namespace App\Tests\Entity;
 
 use App\Entity\Comment;
@@ -55,7 +57,7 @@ class CommentTest extends TestCase
         $comment = new Comment();
         $user = new User();
 
-        //when
+        // when
         $comment->setUser($user);
 
         // then

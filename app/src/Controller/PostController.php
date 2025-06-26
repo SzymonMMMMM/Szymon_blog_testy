@@ -1,18 +1,19 @@
 <?php
+
 /**
  * Post controller.
  */
 
 namespace App\Controller;
 
-use App\Entity\Post;
 use App\Entity\Comment;
+use App\Entity\Post;
 use App\Entity\User;
-use App\Form\Type\PostType;
 use App\Form\Type\CommentType;
-use App\Repository\CommentRepository;
+use App\Form\Type\PostType;
 use App\Service\CommentServiceInterface;
 use App\Service\PostServiceInterface;
+use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,7 +41,6 @@ class PostController extends AbstractController
      * Translator.
      */
     private TranslatorInterface $translator;
-
 
     /**
      * Constructor.
@@ -79,13 +79,15 @@ class PostController extends AbstractController
     /**
      * Show action.
      *
-     * @param Post     $post     Post entity
-     * @param Request  $request  HTTP request
+     * @param Post    $post    Post entity
+     * @param Request $request HTTP request
      *
      * @return Response HTTP response
+     *
+     * @throws NonUniqueResultException
      */
-    #[Route('/{id}', name: 'post_show', requirements: ['id' => '[1-9]\d*'], methods: ['GET', 'POST'])] // Changed to allow POST for comment submission
-    public function show(Post $post, Request $request, CommentRepository $commentRepository): Response
+    #[Route('/{id}', name: 'post_show', requirements: ['id' => '[1-9]\d*'], methods: ['GET', 'POST'])]
+    public function show(Post $post, Request $request): Response
     {
         /** @var User $user */
         $user = $this->getUser();
@@ -104,15 +106,12 @@ class PostController extends AbstractController
         );
         $form->handleRequest($request);
 
-
         if ($form->isSubmitted() && $form->isValid()) {
             if (!$this->isGranted('ROLE_USER') && !$this->isGranted('ROLE_ADMIN')) {
                 $this->addFlash(
                     'warning',
                     $this->translator->trans('message.can_not_create_a_comment')
                 );
-
-                return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
             } else {
                 $this->commentService->Save($comment);
 
@@ -120,9 +119,9 @@ class PostController extends AbstractController
                     'success',
                     $this->translator->trans('message.comment_created_successfully')
                 );
-
-                return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
             }
+
+            return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
         }
 
         $comment = $this->postService->findOneBy($post->getId());
@@ -131,7 +130,7 @@ class PostController extends AbstractController
             'posts/show.html.twig',
             [
                 'post' => $post,
-                'form' => $form->createView(), // Pass the form to the template
+                'form' => $form->createView(),
                 'comment' => $comment,
             ]
         );

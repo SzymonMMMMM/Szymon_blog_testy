@@ -1,10 +1,18 @@
 <?php
+
+/**
+ * Category entity.
+ */
+
 namespace App\Entity;
 
 use App\Repository\CommentRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Class Comment.
+ */
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 class Comment
 {
@@ -73,11 +81,9 @@ class Comment
      *
      * @param string $content Content
      */
-    public function setContent(string $content): self
+    public function setContent(string $content): void
     {
         $this->content = $content;
-
-        return $this;
     }
 
     /**
@@ -95,11 +101,9 @@ class Comment
      *
      * @param User|null $user User
      */
-    public function setUser(?User $user): self
+    public function setUser(?User $user): void
     {
         $this->user = $user;
-
-        return $this;
     }
 
     /**
@@ -117,10 +121,8 @@ class Comment
      *
      * @param Post|null $post Post
      */
-    public function setPost(?Post $post): self
+    public function setPost(?Post $post): void
     {
         $this->post = $post;
-
-        return $this;
     }
 }

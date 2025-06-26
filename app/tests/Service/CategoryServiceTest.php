@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Category service tests.
  */
@@ -11,7 +12,6 @@ use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Service\CategoryService;
 use App\Service\CategoryServiceInterface;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -39,7 +39,6 @@ class CategoryServiceTest extends KernelTestCase
      */
     private ?User $testUser;
 
-
     /**
      * Set up test.
      *
@@ -52,34 +51,6 @@ class CategoryServiceTest extends KernelTestCase
         $this->entityManager = $container->get('doctrine.orm.entity_manager');
         $this->categoryService = $container->get(CategoryService::class);
         $this->testUser = $this->createUser([UserRole::ROLE_USER->value]);
-
-    }
-
-    /**
-     * Create user.
-     *
-     * @param array $roles User roles
-     *
-     * @return User User entity
-     *
-     * @throws ContainerExceptionInterface|NotFoundExceptionInterface|ORMException|OptimisticLockException
-     */
-    private function createUser(array $roles, string $email = 'user@example.com'): User
-    {
-        $passwordHasher = static::getContainer()->get('security.password_hasher');
-        $user = new User();
-        $user->setEmail($email);
-        $user->setRoles($roles);
-        $user->setPassword(
-            $passwordHasher->hashPassword(
-                $user,
-                'p@55w0rd'
-            )
-        );
-        $userRepository = static::getContainer()->get(UserRepository::class);
-        $userRepository->save($user);
-
-        return $user;
     }
 
     /**
@@ -91,7 +62,8 @@ class CategoryServiceTest extends KernelTestCase
     {
         // given
         $expectedCategory = new Category();
-        $expectedCategory->setTitle('Test Category');;
+        $expectedCategory->setTitle('Test Category');
+
         $expectedCategory->setAuthor($this->testUser);
         $this->entityManager->persist($expectedCategory);
         $this->entityManager->flush();
@@ -131,4 +103,31 @@ class CategoryServiceTest extends KernelTestCase
         $this->assertEquals($expectedResultSize, $result->count());
     }
 
+    /**
+     * Create user.
+     *
+     * @param array  $roles User roles
+     * @param string $email User email
+     *
+     * @return User User entity
+     *
+     * @throws ContainerExceptionInterface|NotFoundExceptionInterface|ORMException|OptimisticLockException
+     */
+    private function createUser(array $roles, string $email = 'user@example.com'): User
+    {
+        $passwordHasher = static::getContainer()->get('security.password_hasher');
+        $user = new User();
+        $user->setEmail($email);
+        $user->setRoles($roles);
+        $user->setPassword(
+            $passwordHasher->hashPassword(
+                $user,
+                'p@55w0rd'
+            )
+        );
+        $userRepository = static::getContainer()->get(UserRepository::class);
+        $userRepository->save($user);
+
+        return $user;
+    }
 }

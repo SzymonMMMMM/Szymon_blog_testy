@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Registration type.
  */
@@ -34,15 +35,15 @@ class RegistrationFormType extends AbstractType
     {
         $builder->add('email');
         $builder->add('password', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'first_options' => ['label' => 'label.password'],
-                'second_options' => ['label' => 'label.password_repeat'],
-                'constraints' => [
-                    new NotBlank(),
-                    new Length([
-                        'max' => 255,
-                    ]),
-                ],
+            'type' => PasswordType::class,
+            'first_options' => ['label' => 'label.password'],
+            'second_options' => ['label' => 'label.password_repeat'],
+            'constraints' => [
+                new NotBlank(),
+                new Length([
+                    'max' => 255,
+                ]),
+            ],
         ])
         ;
     }

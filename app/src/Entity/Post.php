@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Post entity.
  */
@@ -6,10 +7,9 @@
 namespace App\Entity;
 
 use App\Repository\PostRepository;
-use DateTimeImmutable;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -104,12 +104,11 @@ class Post
     #[Assert\Type(User::class)]
     private ?User $author;
 
+    //    #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comments::class)]
+    //    private Collection $comments;
 
-//    #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comments::class)]
-//    private Collection $comments;
-
-//    #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comment::class, orphanRemoval: true)]
-//    private Collection $comment;
+    //    #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comment::class, orphanRemoval: true)]
+    //    private Collection $comment;
 
     /**
      * Constructor.
@@ -117,7 +116,7 @@ class Post
     public function __construct()
     {
         $this->tags = new ArrayCollection();
-//        $this->comments = new ArrayCollection();
+        //        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -282,33 +281,33 @@ class Post
         $this->author = $author;
     }
 
-//    /**
-//     * @return Collection<int, Comments>
-//     */
-//    public function getComments(): Collection
-//    {
-//        return $this->comments;
-//    }
+    //    /**
+    //     * @return Collection<int, Comments>
+    //     */
+    //    public function getComments(): Collection
+    //    {
+    //        return $this->comments;
+    //    }
 
-//    public function addComment(Comments $comment): self
-//    {
-//        if (!$this->comments->contains($comment)) {
-//            $this->comments->add($comment);
-//            $comment->setPost($this);
-//        }
-//
-//        return $this;
-//    }
+    //    public function addComment(Comments $comment): self
+    //    {
+    //        if (!$this->comments->contains($comment)) {
+    //            $this->comments->add($comment);
+    //            $comment->setPost($this);
+    //        }
+    //
+    //        return $this;
+    //    }
 
-//    public function removeComment(Comments $comment): self
-//    {
-//        if ($this->comments->removeElement($comment)) {
-//            // set the owning side to null (unless already changed)
-//            if ($comment->getPost() === $this) {
-//                $comment->setPost(null);
-//            }
-//        }
-//
-//        return $this;
-//    }
+    //    public function removeComment(Comments $comment): self
+    //    {
+    //        if ($this->comments->removeElement($comment)) {
+    //            // set the owning side to null (unless already changed)
+    //            if ($comment->getPost() === $this) {
+    //                $comment->setPost(null);
+    //            }
+    //        }
+    //
+    //        return $this;
+    //    }
 }

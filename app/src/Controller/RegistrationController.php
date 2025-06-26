@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Registration controller.
  */
@@ -8,12 +9,12 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\Type\RegistrationFormType;
 use App\Security\LoginFormAuthenticator;
+use App\Service\UserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
-use App\Service\UserServiceInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
