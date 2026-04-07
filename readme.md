@@ -1,4 +1,4 @@
-# Aplikacja do przechowywania i zarządzania notesem oraz listą rzeczy do zrobienia
+# Aplikacja webowa do zarządzania notatkami i listami zadań, zbudowana z silnym naciskiem na architekturę testowalną i automatyzację testów.
 
 ## Wymagane
 
@@ -41,13 +41,40 @@ Połącz sie z daną bazy dockera w pliku '.env'. Trzeba w pliku zmienić linie 
 DATABASE_URL=mysql://symfony:symfony@mysql:3306/symfony?serverVersion=5.7
 ```
 
-Ostatecznie:
+Następnie:
 ```yaml
 composer install
 bin/console doctrine:migrations:migrate
 bin/console doctrine:fixtures:load
 ```
+
+## Testy automatyczne (QA Focus)
+
+Projekt został przygotowany zgodnie z zasadami Quality Assurance. Większość logiki biznesowej jest pokryta testami automatycznymi, co zapewnia stabilność aplikacji przy wdrażaniu nowych funkcji.
+
+### Uruchamianie wszystkich testów:
+
+Będąc wewnątrz kontenera PHP (`docker-compose exec php bash`), uruchom:
+
+Bash
+
+```other
+bin/phpunit
+```
+### Zakres testów:
+
+- **Testy jednostkowe (Unit Tests):** Weryfikacja logiki encji oraz serwisów odpowiedzialnych za zarządzanie notatkami.
+- **Testy funkcjonalne (Functional Tests):** Sprawdzenie poprawności ścieżek użytkownika (np. tworzenie zadania, edycja notatki) oraz integracji z bazą danych.
+- **Testy odpowiedzi HTTP:** Weryfikacja kodów statusu (200 OK, 404 Not Found) dla kluczowych endpointów.
+
 Aby połączyć się ze symfony w przyglądarce i sprawdzić czy działa przechodzimy do
 ```bash
 http://localhost:8000
 ```
+
+## Technologia
+
+- **Backend:** Symfony 5.4
+- **Baza danych:** MySQL 5.7
+- **Konteneryzacja:** Docker & Docker Compose
+- **Testowanie:** PHPUnit
