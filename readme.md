@@ -52,7 +52,7 @@ bin/console doctrine:fixtures:load
 
 Projekt został przygotowany zgodnie z zasadami Quality Assurance. Większość logiki biznesowej jest pokryta testami automatycznymi, co zapewnia stabilność aplikacji przy wdrażaniu nowych funkcji.
 
-### Uruchamianie wszystkich testów:
+# Uruchamianie wszystkich testów:
 
 Będąc wewnątrz kontenera PHP (`docker-compose exec php bash`), uruchom:
 
@@ -61,20 +61,20 @@ Bash
 ```other
 bin/phpunit
 ```
-### Zakres testów:
+# Zakres testów:
 
-- **Testy jednostkowe (Unit Tests):** Weryfikacja logiki encji oraz serwisów odpowiedzialnych za zarządzanie notatkami.
-- **Testy funkcjonalne (Functional Tests):** Sprawdzenie poprawności ścieżek użytkownika (np. tworzenie zadania, edycja notatki) oraz integracji z bazą danych.
-- **Testy odpowiedzi HTTP:** Weryfikacja kodów statusu (200 OK, 404 Not Found) dla kluczowych endpointów.
+- Testy jednostkowe: sprawdzenie, czy poprawnie działa logika encji oraz serwisów odpowiedzialnych za obsługę notatek.
+- Testy funkcjonalne: weryfikacja najważniejszych scenariuszy użytkownika (np. dodawanie zadania, edycja notatki) oraz poprawności działania z bazą danych.
+- Testy odpowiedzi HTTP: sprawdzenie, czy kluczowe endpointy zwracają właściwe kody statusu (np. 200 OK, 404 Not Found).
 
 Aby połączyć się ze symfony w przyglądarce i sprawdzić czy działa przechodzimy do
 ```bash
 http://localhost:8000
 ```
 
-## Technologia
+# Technologia
 
-- **Backend:** Symfony 5.4
-- **Baza danych:** MySQL 5.7
-- **Konteneryzacja:** Docker & Docker Compose
-- **Testowanie:** PHPUnit
+- Backend: Symfony 5.4
+- Baza danych: MySQL 5.7
+- Konteneryzacja: Docker & Docker Compose
+- Testowanie: PHPUnit
