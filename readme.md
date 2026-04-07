@@ -48,11 +48,11 @@ bin/console doctrine:migrations:migrate
 bin/console doctrine:fixtures:load
 ```
 
-## Testy automatyczne (QA Focus)
+### Testy automatyczne (QA Focus)
 
 Projekt został przygotowany zgodnie z zasadami Quality Assurance. Większość logiki biznesowej jest pokryta testami automatycznymi, co zapewnia stabilność aplikacji przy wdrażaniu nowych funkcji.
 
-# Uruchamianie wszystkich testów:
+#### Uruchamianie wszystkich testów:
 
 Będąc wewnątrz kontenera PHP (`docker-compose exec php bash`), uruchom:
 
@@ -61,7 +61,7 @@ Bash
 ```other
 bin/phpunit
 ```
-# Zakres testów:
+#### Zakres testów:
 
 - Testy jednostkowe: sprawdzenie, czy poprawnie działa logika encji oraz serwisów odpowiedzialnych za obsługę notatek.
 - Testy funkcjonalne: weryfikacja najważniejszych scenariuszy użytkownika (np. dodawanie zadania, edycja notatki) oraz poprawności działania z bazą danych.
@@ -72,7 +72,7 @@ Aby połączyć się ze symfony w przyglądarce i sprawdzić czy działa przecho
 http://localhost:8000
 ```
 
-# Technologia
+#### Technologia
 
 - Backend: Symfony 5.4
 - Baza danych: MySQL 5.7
